@@ -1,2 +1,5 @@
-
+rofi.matching: normal
+rofi.combi-modi: window,drun,ssh,run
+rofi.modi: combi
+rofi.font: mononoki 12
 rofi.theme: /usr/share/rofi/themes/glue_pro_blue.rasi
