@@ -1,6 +1,3 @@
 function fish_greeting
-	fish_logo
-	echo ""
-	fortune
-	echo ""
+	neofetch --disable distro --disable theme --disable icons --disable uptime --disable packages --enable local_ip
 end
