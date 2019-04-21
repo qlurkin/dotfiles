@@ -1,0 +1,7 @@
+alot		interface
+afew		autotag mail
+notmuch		index mail
+offlineimap	synchronize imap
+msmtp		send mail
+khal		calendar
+khard		contact
