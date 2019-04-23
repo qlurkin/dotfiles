@@ -26,12 +26,26 @@
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
+import os
+import subprocess
+
+# Start Keyring for Chrome Passwords Sync
+lazy.spawn("/usr/bin/gnome-keyring-daemon --start --components=secrets")
 
 mod = "mod4"
+alt = "mod1"
 
 keys = [
     # Switch between windows in current stack pane
+    Key(
+        [mod], "h",
+        lazy.layout.left()
+    ),
+    Key(
+        [mod], "l",
+        lazy.layout.right()
+    ),
     Key(
         [mod], "k",
         lazy.layout.down()
@@ -43,65 +57,114 @@ keys = [
 
     # Move windows up or down in current stack
     Key(
-        [mod, "control"], "k",
+        [mod, "shift"], "h",
+        lazy.layout.swap_left()
+    ),
+    Key(
+        [mod, "shift"], "l",
+        lazy.layout.swap_right()
+    ),
+    Key(
+        [mod, "shift"], "k",
         lazy.layout.shuffle_down()
     ),
     Key(
-        [mod, "control"], "j",
+        [mod, "shift"], "j",
         lazy.layout.shuffle_up()
     ),
 
-    # Switch window focus to other pane(s) of stack
+    # Change windows size
     Key(
-        [mod], "space",
-        lazy.layout.next()
+        [mod], "equal",
+        lazy.layout.grow()
+    ),
+    Key(
+        [mod], "minus",
+        lazy.layout.shrink()
+    ),
+    Key(
+        [mod], "n",
+        lazy.layout.normalize()
+    ),
+    Key(
+        [mod], "m",
+        lazy.layout.maximize()
     ),
 
+
+    # Switch window focus to other pane(s) of stack
+    #Key(
+    #    [mod], "space",
+    #    lazy.layout.next()
+    #),
+
     # Swap panes of split stack
-    Key(
-        [mod, "shift"], "space",
-        lazy.layout.rotate()
-    ),
+    #Key(
+    #    [mod, "shift"], "space",
+    #    lazy.layout.rotate()
+    #),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key(
-        [mod, "shift"], "Return",
-        lazy.layout.toggle_split()
-    ),
-    Key([mod], "Return", lazy.spawn("xterm")),
+    #Key(
+    #    [mod, "shift"], "Return",
+    #    lazy.layout.toggle_split()
+    #),
+
+    # Apps
+    Key([mod], "Return", lazy.spawn("urxvt")),
+    Key([mod], "b", lazy.spawn("google-chrome --password-store=gnome")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
 
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd()),
+    Key([mod, "shift"], "r", lazy.restart()),
+    Key([mod, "shift"], "e", lazy.shutdown()),
+    Key([mod], "r", lazy.spawncmd())
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+#groups = [Group(i) for i in "asdfuiop"]
 
-for i in groups:
-    # mod1 + letter of group = switch to group
-    keys.append(
-        Key([mod], i.name, lazy.group[i.name].toscreen())
-    )
+#for i in groups:
+#    # mod1 + letter of group = switch to group
+#    keys.append(
+#        Key([mod], i.name, lazy.group[i.name].toscreen())
+#    )
+#
+#    # mod1 + shift + letter of group = switch to & move focused window to group
+#    keys.append(
+#        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
+#    )
 
-    # mod1 + shift + letter of group = switch to & move focused window to group
-    keys.append(
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
-    )
+groups = [Group(i) for i in "123456789"]
+
+keys += [
+    Key([mod], "ampersand", lazy.group["1"].toscreen()),        
+    Key([mod], "eacute", lazy.group["2"].toscreen()),
+    Key([mod], "quotedbl", lazy.group["3"].toscreen()),
+    Key([mod], "apostrophe", lazy.group["4"].toscreen()),
+    Key([mod], "parenleft", lazy.group["5"].toscreen()),
+    Key([mod], "section", lazy.group["6"].toscreen()),
+    Key([mod], "egrave", lazy.group["7"].toscreen()),
+    Key([mod], "exclam", lazy.group["8"].toscreen()),
+    Key([mod], "ccedilla", lazy.group["9"].toscreen()),
+
+    # Cycle throught groups
+    Key([alt], "Tab", lazy.screen.next_group()),
+    Key([alt, "shift"], "Tab", lazy.screen.prev_group())
+]
+
 
 layouts = [
-    layout.Max(),
-    layout.Stack(num_stacks=2)
+    layout.MonadTall(ratio=0.6, single_border_width=2),
+    layout.Max()
 ]
 
 widget_defaults = dict(
-    font='Arial',
+    font='Mononoki',
     fontsize=16,
     padding=3,
 )
@@ -150,4 +213,11 @@ extentions = []
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "LG3D"
+#wmname = "LG3D"
+wmname = 'qtile'
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
+
