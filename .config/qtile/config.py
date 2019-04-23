@@ -39,37 +39,37 @@ alt = "mod1"
 keys = [
     # Switch between windows in current stack pane
     Key(
-        [mod], "h",
+        [mod], "Left",
         lazy.layout.left()
     ),
     Key(
-        [mod], "l",
+        [mod], "Right",
         lazy.layout.right()
     ),
     Key(
-        [mod], "k",
+        [mod], "Down",
         lazy.layout.down()
     ),
     Key(
-        [mod], "j",
+        [mod], "Up",
         lazy.layout.up()
     ),
 
     # Move windows up or down in current stack
     Key(
-        [mod, "shift"], "h",
+        [mod, "shift"], "Left",
         lazy.layout.swap_left()
     ),
     Key(
-        [mod, "shift"], "l",
+        [mod, "shift"], "Right",
         lazy.layout.swap_right()
     ),
     Key(
-        [mod, "shift"], "k",
+        [mod, "shift"], "Down",
         lazy.layout.shuffle_down()
     ),
     Key(
-        [mod, "shift"], "j",
+        [mod, "shift"], "Up",
         lazy.layout.shuffle_up()
     ),
 
@@ -91,34 +91,13 @@ keys = [
         lazy.layout.maximize()
     ),
 
-
-    # Switch window focus to other pane(s) of stack
-    #Key(
-    #    [mod], "space",
-    #    lazy.layout.next()
-    #),
-
-    # Swap panes of split stack
-    #Key(
-    #    [mod, "shift"], "space",
-    #    lazy.layout.rotate()
-    #),
-
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    #Key(
-    #    [mod, "shift"], "Return",
-    #    lazy.layout.toggle_split()
-    #),
-
     # Apps
     Key([mod], "Return", lazy.spawn("urxvt")),
     Key([mod], "b", lazy.spawn("google-chrome --password-store=gnome")),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout()),
+    # Toggle between MonadTall and Max layout
+    Key([mod], "f", lazy.next_layout()),
+
     Key([mod], "w", lazy.window.kill()),
 
     Key([mod, "shift"], "r", lazy.restart()),
@@ -139,18 +118,35 @@ keys = [
 #        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
 #    )
 
-groups = [Group(i) for i in "123456789"]
+group_names = "123456789"
+group_keys = [
+    "ampersand",
+    "eacute",
+    "quotedbl",
+    "apostrophe",
+    "parenleft",
+    "section",
+    "egrave",
+    "exclam",
+    "ccedilla"
+]
+
+groups = [Group(i) for i in group_names]
+
+for name, key in zip(group_names, group_keys):
+    keys.append(Key([mod], key, lazy.group[name].toscreen()))
+    keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
 keys += [
-    Key([mod], "ampersand", lazy.group["1"].toscreen()),        
-    Key([mod], "eacute", lazy.group["2"].toscreen()),
-    Key([mod], "quotedbl", lazy.group["3"].toscreen()),
-    Key([mod], "apostrophe", lazy.group["4"].toscreen()),
-    Key([mod], "parenleft", lazy.group["5"].toscreen()),
-    Key([mod], "section", lazy.group["6"].toscreen()),
-    Key([mod], "egrave", lazy.group["7"].toscreen()),
-    Key([mod], "exclam", lazy.group["8"].toscreen()),
-    Key([mod], "ccedilla", lazy.group["9"].toscreen()),
+    # Key([mod], "ampersand", lazy.group["1"].toscreen()),        
+    # Key([mod], "eacute", lazy.group["2"].toscreen()),
+    # Key([mod], "quotedbl", lazy.group["3"].toscreen()),
+    # Key([mod], "apostrophe", lazy.group["4"].toscreen()),
+    # Key([mod], "parenleft", lazy.group["5"].toscreen()),
+    # Key([mod], "section", lazy.group["6"].toscreen()),
+    # Key([mod], "egrave", lazy.group["7"].toscreen()),
+    # Key([mod], "exclam", lazy.group["8"].toscreen()),
+    # Key([mod], "ccedilla", lazy.group["9"].toscreen()),
 
     # Cycle throught groups
     Key([alt], "Tab", lazy.screen.next_group()),
