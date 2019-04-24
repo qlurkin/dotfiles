@@ -29,94 +29,97 @@ from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 import os
 import subprocess
-
-# Start Keyring for Chrome Passwords Sync
-lazy.spawn("/usr/bin/gnome-keyring-daemon --start --components=secrets")
+import socket
 
 mod = "mod4"
 alt = "mod1"
 
+colors = {
+    "foreground": "#ffffff",
+    "background": "#132738",
+    "cursor": "#f0cc09",
+    "black1": "#000000",
+    "black2": "#555555",
+    "red1": "#ff0000",
+    "red2": "#f40e17",
+    "green1": "#38de21",
+    "green2": "#3bd01d",
+    "yellow1": "#ffe50a",
+    "yellow2": "#edc809",
+    "blue1": "#1460d2",
+    "blue2": "#5555ff",
+    "magenta1": "#ff005d",
+    "magenta2": "#ff55ff",
+    "cyan1": "#00bbbb",
+    "cyan2": "#6ae3fa",
+    "white1": "#bbbbbb",
+    "white2": "#ffffff",
+    "bold": "#f7fcff"
+}
+
+def backlight(action):
+    def f(qtile):
+        brightness = int(subprocess.run(['xbacklight', '-get'],
+                                        stdout=subprocess.PIPE).stdout)
+        if brightness != 1 or action != 'dec':
+            if (brightness > 49 and action == 'dec') \
+                                or (brightness > 39 and action == 'inc'):
+                subprocess.run(['xbacklight', f'-{action}', '10',
+                                '-fps', '10'])
+            else:
+                subprocess.run(['xbacklight', f'-{action}', '1'])
+    return f
+
 keys = [
     # Switch between windows in current stack pane
-    Key(
-        [mod], "Left",
-        lazy.layout.left()
-    ),
-    Key(
-        [mod], "Right",
-        lazy.layout.right()
-    ),
-    Key(
-        [mod], "Down",
-        lazy.layout.down()
-    ),
-    Key(
-        [mod], "Up",
-        lazy.layout.up()
-    ),
+    Key([mod], "Left",            lazy.layout.left()),
+    Key([mod], "Right",           lazy.layout.right()),
+    Key([mod], "Down",            lazy.layout.down()),
+    Key([mod], "Up",              lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key(
-        [mod, "shift"], "Left",
-        lazy.layout.swap_left()
-    ),
-    Key(
-        [mod, "shift"], "Right",
-        lazy.layout.swap_right()
-    ),
-    Key(
-        [mod, "shift"], "Down",
-        lazy.layout.shuffle_down()
-    ),
-    Key(
-        [mod, "shift"], "Up",
-        lazy.layout.shuffle_up()
-    ),
+    Key([mod, "shift"], "Left",   lazy.layout.swap_left()),
+    Key([mod, "shift"], "Right",  lazy.layout.swap_right()),
+    Key([mod, "shift"], "Down",   lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Up",     lazy.layout.shuffle_up()),
 
     # Change windows size
-    Key(
-        [mod], "equal",
-        lazy.layout.grow()
-    ),
-    Key(
-        [mod], "minus",
-        lazy.layout.shrink()
-    ),
-    Key(
-        [mod], "n",
-        lazy.layout.normalize()
-    ),
-    Key(
-        [mod], "m",
-        lazy.layout.maximize()
-    ),
+    Key([mod], "equal",           lazy.layout.grow()),
+    Key([mod], "minus",           lazy.layout.shrink()),
+    Key([mod], "n",               lazy.layout.normalize()),
+    Key([mod], "m",               lazy.layout.maximize()),
 
     # Apps
-    Key([mod], "Return", lazy.spawn("urxvt")),
-    Key([mod], "b", lazy.spawn("google-chrome --password-store=gnome")),
+    Key([mod], "Return",          lazy.spawn("urxvt")),
+    Key([mod], "b",               lazy.spawn("google-chrome --password-store=gnome")),
+    Key([mod], "space",           lazy.spawn("rofi -show combi")),
+    Key([mod], "l",               lazy.spawn("i3lock -c 132738")),
 
     # Toggle between MonadTall and Max layout
-    Key([mod], "f", lazy.next_layout()),
+    Key([mod], "f",               lazy.next_layout()),
 
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "w",               lazy.window.kill()),
 
-    Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod, "shift"], "e", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd())
+    Key([mod, "shift"], "r",      lazy.restart()),
+    Key([mod, "shift"], "e",      lazy.shutdown()),
+    Key([mod], "r",               lazy.spawncmd()),
+
+    # Cycle throught groups
+    Key([alt], "Tab",             lazy.screen.next_group()),
+    Key([alt, "shift"], "Tab",    lazy.screen.prev_group()),
+    Key([alt], "Right",           lazy.screen.next_group()),
+    Key([alt], "Left",            lazy.screen.prev_group()),
+
+
+    # Sound control
+    Key([], "XF86AudioRaiseVolume",  lazy.spawn("pactl set-sink-volume 0 +5%")),
+    Key([], "XF86AudioLowerVolume",  lazy.spawn("pactl set-sink-volume 0 -5%")),
+    Key([], "XF86AudioMute",         lazy.spawn("pactl set-sink-mute 0 toggle")),
+
+    # Monitor Brightness control
+    Key([], "XF86MonBrightnessUp",   lazy.function(backlight('inc'))),
+    Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec')))
 ]
-
-#groups = [Group(i) for i in "asdfuiop"]
-
-#for i in groups:
-#    # mod1 + letter of group = switch to group
-#    keys.append(
-#        Key([mod], i.name, lazy.group[i.name].toscreen())
-#    )
-#
-#    # mod1 + shift + letter of group = switch to & move focused window to group
-#    keys.append(
-#        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
-#    )
 
 group_names = "123456789"
 group_keys = [
@@ -137,23 +140,6 @@ for name, key in zip(group_names, group_keys):
     keys.append(Key([mod], key, lazy.group[name].toscreen()))
     keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
-keys += [
-    # Key([mod], "ampersand", lazy.group["1"].toscreen()),        
-    # Key([mod], "eacute", lazy.group["2"].toscreen()),
-    # Key([mod], "quotedbl", lazy.group["3"].toscreen()),
-    # Key([mod], "apostrophe", lazy.group["4"].toscreen()),
-    # Key([mod], "parenleft", lazy.group["5"].toscreen()),
-    # Key([mod], "section", lazy.group["6"].toscreen()),
-    # Key([mod], "egrave", lazy.group["7"].toscreen()),
-    # Key([mod], "exclam", lazy.group["8"].toscreen()),
-    # Key([mod], "ccedilla", lazy.group["9"].toscreen()),
-
-    # Cycle throught groups
-    Key([alt], "Tab", lazy.screen.next_group()),
-    Key([alt, "shift"], "Tab", lazy.screen.prev_group())
-]
-
-
 layouts = [
     layout.MonadTall(ratio=0.6, single_border_width=2),
     layout.Max()
@@ -163,18 +149,30 @@ widget_defaults = dict(
     font='Mononoki',
     fontsize=16,
     padding=3,
+    background=colors["background"]
 )
-
+powerline = 28
+icon = 20
 screens = [
     Screen(
         bottom=bar.Bar(
             [
                 widget.GroupBox(),
-                widget.Prompt(),
+                widget.TextBox(text='  ', fontsize=powerline),
+                widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
                 widget.WindowName(),
-                widget.TextBox("default config", name="default"),
+                widget.TextBox(text=' ', fontsize=powerline),
+                widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white1"], padding=0, font="Font Awesome"),
+                widget.Net(interface='wlp3s0'),
+                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
+                widget.TextBox(text='\uf028', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+                widget.Volume(background=colors["white1"], foreground=colors["black1"], padding=10),
+                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"], padding=-1),
+                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
+                widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+                widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
             ],
             30,
         ),
