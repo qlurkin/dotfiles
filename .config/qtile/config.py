@@ -70,6 +70,29 @@ def backlight(action):
                 subprocess.run(['xbacklight', f'-{action}', '1'])
     return f
 
+def projection():
+    proj_modes = [
+        "xrandr --output HDMI-1-2 --off",
+        "xrandr --output HDMI-1-2 --auto --right-of eDP-1-1",
+        "xrandr --output HDMI-1-2 --auto --same-as eDP-1-1"
+    ]
+
+    proj_mode_index = 0
+
+    def f(qtile):
+        nonlocal proj_mode_index
+        proj_mode_index = (proj_mode_index+1) % len(proj_modes)
+        subprocess.run(proj_modes[proj_mode_index].split(' '))
+
+    return f
+
+def matrix():
+    def f(qtile):
+        pass
+        #subprocess.call("urxvt -e cmatrix".split())
+
+    return f
+
 keys = [
     # Switch between windows in current stack pane
     Key([mod], "Left",            lazy.layout.left()),
@@ -105,8 +128,7 @@ keys = [
     Key([mod], "r",               lazy.spawncmd()),
 
     # Cycle throught groups
-    Key([alt], "Tab",             lazy.screen.next_group()),
-    Key([alt, "shift"], "Tab",    lazy.screen.prev_group()),
+    Key([alt], "Tab",             lazy.screen.toggle_group()),
     Key([alt], "Right",           lazy.screen.next_group()),
     Key([alt], "Left",            lazy.screen.prev_group()),
 
@@ -118,7 +140,12 @@ keys = [
 
     # Monitor Brightness control
     Key([], "XF86MonBrightnessUp",   lazy.function(backlight('inc'))),
-    Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec')))
+    Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec'))),
+
+    # Projector
+    Key([mod], "p",               lazy.spawn("xrandr --output HDMI-1-2 --auto --same-as eDP-1-1")),
+    
+    Key([mod], "x", lazy.spawn("urxvt -e cmatrix"))
 ]
 
 group_names = "123456789"
@@ -145,6 +172,10 @@ layouts = [
     layout.Max()
 ]
 
+#groups.append(
+#    ScratchPad("scratchpad", [
+#
+
 widget_defaults = dict(
     font='Mononoki',
     fontsize=16,
@@ -161,7 +192,13 @@ screens = [
                 widget.TextBox(text='  ', fontsize=powerline),
                 widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
                 widget.WindowName(),
-                widget.TextBox(text=' ', fontsize=powerline),
+                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
+                widget.TextBox(text='\uf240', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+                widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["white1"], foreground=colors["background"]),
+                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"]),
+                widget.TextBox(text='\uf240', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+                widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["white1"], foreground=colors["background"]),
+                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"], padding=-1),
                 widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white1"], padding=0, font="Font Awesome"),
                 widget.Net(interface='wlp3s0'),
                 widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
@@ -176,7 +213,9 @@ screens = [
             ],
             30,
         ),
+        right=bar.Gap(0)
     ),
+    Screen(bottom=bar.Bar([widget.GroupBox()],30))
 ]
 
 # Drag floating layouts.
@@ -210,8 +249,14 @@ extentions = []
 #wmname = "LG3D"
 wmname = 'qtile'
 
+subprocess.call('xrandr --output HDMI-1-2 --auto --right-of eDP-1-1'.split(' '))
+
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
+
+@hook.subscribe.screen_change
+def restart_on_randr(qtile, ev):
+    qtile.cmd_restart()
 
