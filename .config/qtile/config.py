@@ -117,6 +117,7 @@ keys = [
     Key([mod], "b",               lazy.spawn("google-chrome --password-store=gnome")),
     Key([mod], "space",           lazy.spawn("rofi -show combi")),
     Key([mod], "l",               lazy.spawn("i3lock -c 132738")),
+    Key([], "Print",              lazy.spawn("scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
 
     # Toggle between MonadTall and Max layout
     Key([mod], "f",               lazy.next_layout()),
