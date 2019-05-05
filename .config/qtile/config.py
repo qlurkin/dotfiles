@@ -70,28 +70,28 @@ def backlight(action):
                 subprocess.run(['xbacklight', f'-{action}', '1'])
     return f
 
-def projection():
-    proj_modes = [
-        "xrandr --output HDMI-1-2 --off",
-        "xrandr --output HDMI-1-2 --auto --right-of eDP-1-1",
-        "xrandr --output HDMI-1-2 --auto --same-as eDP-1-1"
-    ]
+# def projection():
+#     proj_modes = [
+#         "xrandr --output HDMI-1-2 --off",
+#         "xrandr --output HDMI-1-2 --auto --right-of eDP-1-1",
+#         "xrandr --output HDMI-1-2 --auto --same-as eDP-1-1"
+#     ]
 
-    proj_mode_index = 0
+#     proj_mode_index = 0
 
-    def f(qtile):
-        nonlocal proj_mode_index
-        proj_mode_index = (proj_mode_index+1) % len(proj_modes)
-        subprocess.run(proj_modes[proj_mode_index].split(' '))
+#     def f(qtile):
+#         nonlocal proj_mode_index
+#         proj_mode_index = (proj_mode_index+1) % len(proj_modes)
+#         subprocess.run(proj_modes[proj_mode_index].split(' '))
 
-    return f
+#     return f
 
-def matrix():
-    def f(qtile):
-        pass
-        #subprocess.call("urxvt -e cmatrix".split())
+# def matrix():
+#     def f(qtile):
+#         pass
+#         #subprocess.call("urxvt -e cmatrix".split())
 
-    return f
+#     return f
 
 keys = [
     # Switch between windows in current stack pane
@@ -114,10 +114,13 @@ keys = [
 
     # Apps
     Key([mod], "Return",          lazy.spawn("urxvt")),
-    Key([mod], "b",               lazy.spawn("google-chrome --password-store=gnome")),
+    Key([mod], "c",               lazy.spawn("code")),
+    Key([mod], "b",               lazy.spawn("chromium-browser --password-store=gnome")),
     Key([mod], "space",           lazy.spawn("rofi -show combi")),
     Key([mod], "l",               lazy.spawn("i3lock -c 132738")),
+    #Key([mod], "l",               lazy.spawn("gnome-screensaver-command -l")),
     Key([], "Print",              lazy.spawn("scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
+    #Key([], "Print",              lazy.spawn("gnome-screenshot -i")),
 
     # Toggle between MonadTall and Max layout
     Key([mod], "f",               lazy.next_layout()),
@@ -126,6 +129,8 @@ keys = [
 
     Key([mod, "shift"], "r",      lazy.restart()),
     Key([mod, "shift"], "e",      lazy.shutdown()),
+    #Key([mod, "shift"], "q",      lazy.spawn('gnome-session-quit --logout --no-prompt')),
+    #Key([mod], "agrave", lazy.spawn('gnome-session-quit --power-off')),
     Key([mod], "r",               lazy.spawncmd()),
 
     # Cycle throught groups
@@ -144,9 +149,9 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec'))),
 
     # Projector
-    Key([mod], "p",               lazy.spawn("xrandr --output HDMI-1-2 --auto --same-as eDP-1-1")),
+    #Key([mod], "p",               lazy.spawn("xrandr --output HDMI-1-2 --auto --same-as eDP-1-1")),
     
-    Key([mod], "x", lazy.spawn("urxvt -e cmatrix"))
+    #Key([mod], "x", lazy.spawn("urxvt -e cmatrix"))
 ]
 
 group_names = "123456789"
@@ -261,3 +266,16 @@ def start_once():
 def restart_on_randr(qtile, ev):
     qtile.cmd_restart()
 
+# @hook.subscribe.startup
+# def dbus_register():
+#    id = os.environ.get('DESKTOP_AUTOSTART_ID')
+#    if not id:
+#        return
+#    subprocess.Popen(['dbus-send',
+#                      '--session',
+#                      '--print-reply',
+#                      '--dest=org.gnome.SessionManager',
+#                      '/org/gnome/SessionManager',
+#                      'org.gnome.SessionManager.RegisterClient',
+#                      'string:qtile',
+#                      'string:' + id])

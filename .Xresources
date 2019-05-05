@@ -43,7 +43,7 @@ Xft.dpi: 140
 !*.colorUL:
 !
 urxvt.scrollBar:       false
-urxvt.perl-ext-common: font-size
+urxvt.perl-ext-common: font-size,vtwheel
 urxvt.keysym.C-Up:     perl:font-size:increase
 urxvt.keysym.C-Down:   perl:font-size:decrease
 urxvt.keysym.C-S-Up:   perl:font-size:incglobal
