@@ -35,40 +35,40 @@ mod = "mod4"
 alt = "mod1"
 
 colors = {
-    "foreground": "#ffffff",
-    "background": "#132738",
-    "cursor": "#f0cc09",
-    "black1": "#000000",
-    "black2": "#555555",
-    "red1": "#ff0000",
-    "red2": "#f40e17",
-    "green1": "#38de21",
-    "green2": "#3bd01d",
-    "yellow1": "#ffe50a",
-    "yellow2": "#edc809",
-    "blue1": "#1460d2",
-    "blue2": "#5555ff",
-    "magenta1": "#ff005d",
-    "magenta2": "#ff55ff",
-    "cyan1": "#00bbbb",
-    "cyan2": "#6ae3fa",
-    "white1": "#bbbbbb",
-    "white2": "#ffffff",
-    "bold": "#f7fcff"
+	"foreground": "#ffffff",
+	"background": "#132738",
+	"cursor": "#f0cc09",
+	"black1": "#000000",
+	"black2": "#555555",
+	"red1": "#ff0000",
+	"red2": "#f40e17",
+	"green1": "#38de21",
+	"green2": "#3bd01d",
+	"yellow1": "#ffe50a",
+	"yellow2": "#edc809",
+	"blue1": "#1460d2",
+	"blue2": "#5555ff",
+	"magenta1": "#ff005d",
+	"magenta2": "#ff55ff",
+	"cyan1": "#00bbbb",
+	"cyan2": "#6ae3fa",
+	"white1": "#bbbbbb",
+	"white2": "#ffffff",
+	"bold": "#f7fcff"
 }
 
 def backlight(action):
-    def f(qtile):
-        brightness = int(subprocess.run(['xbacklight', '-get'],
-                                        stdout=subprocess.PIPE).stdout)
-        if brightness != 1 or action != 'dec':
-            if (brightness > 49 and action == 'dec') \
-                                or (brightness > 39 and action == 'inc'):
-                subprocess.run(['xbacklight', f'-{action}', '10',
-                                '-fps', '10'])
-            else:
-                subprocess.run(['xbacklight', f'-{action}', '1'])
-    return f
+	def f(qtile):
+		brightness = int(subprocess.run(['xbacklight', '-get'],
+										stdout=subprocess.PIPE).stdout)
+		if brightness != 1 or action != 'dec':
+			if (brightness > 49 and action == 'dec') \
+								or (brightness > 39 and action == 'inc'):
+				subprocess.run(['xbacklight', f'-{action}', '10',
+								'-fps', '10'])
+			else:
+				subprocess.run(['xbacklight', f'-{action}', '1'])
+	return f
 
 # def projection():
 #     proj_modes = [
@@ -94,88 +94,88 @@ def backlight(action):
 #     return f
 
 keys = [
-    # Switch between windows in current stack pane
-    Key([mod], "Left",            lazy.layout.left()),
-    Key([mod], "Right",           lazy.layout.right()),
-    Key([mod], "Down",            lazy.layout.down()),
-    Key([mod], "Up",              lazy.layout.up()),
+	# Switch between windows in current stack pane
+	Key([mod], "Left",            lazy.layout.left()),
+	Key([mod], "Right",           lazy.layout.right()),
+	Key([mod], "Down",            lazy.layout.down()),
+	Key([mod], "Up",              lazy.layout.up()),
 
-    # Move windows up or down in current stack
-    Key([mod, "shift"], "Left",   lazy.layout.swap_left()),
-    Key([mod, "shift"], "Right",  lazy.layout.swap_right()),
-    Key([mod, "shift"], "Down",   lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "Up",     lazy.layout.shuffle_up()),
+	# Move windows up or down in current stack
+	Key([mod, "shift"], "Left",   lazy.layout.swap_left()),
+	Key([mod, "shift"], "Right",  lazy.layout.swap_right()),
+	Key([mod, "shift"], "Down",   lazy.layout.shuffle_down()),
+	Key([mod, "shift"], "Up",     lazy.layout.shuffle_up()),
 
-    # Change windows size
-    Key([mod], "equal",           lazy.layout.grow()),
-    Key([mod], "minus",           lazy.layout.shrink()),
-    Key([mod], "n",               lazy.layout.normalize()),
-    Key([mod], "m",               lazy.layout.maximize()),
+	# Change windows size
+	Key([mod], "equal",           lazy.layout.grow()),
+	Key([mod], "minus",           lazy.layout.shrink()),
+	Key([mod], "n",               lazy.layout.normalize()),
+	Key([mod], "m",               lazy.layout.maximize()),
 
-    # Apps
-    Key([mod], "Return",          lazy.spawn("urxvt")),
-    Key([mod], "c",               lazy.spawn("code")),
-    Key([mod], "b",               lazy.spawn("chromium-browser --password-store=gnome")),
-    Key([mod], "space",           lazy.spawn("rofi -show combi")),
-    Key([mod], "l",               lazy.spawn("i3lock -c 132738")),
-    #Key([mod], "l",               lazy.spawn("gnome-screensaver-command -l")),
-    Key([], "Print",              lazy.spawn("scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
-    #Key([], "Print",              lazy.spawn("gnome-screenshot -i")),
+	# Apps
+	Key([mod], "Return",          lazy.spawn("urxvt")),
+	Key([mod], "c",               lazy.spawn("code")),
+	Key([mod], "b",               lazy.spawn("chromium-browser --password-store=gnome")),
+	Key([mod], "space",           lazy.spawn("rofi -show combi")),
+	Key([mod], "l",               lazy.spawn("i3lock -i /home/ql/.config/qtile/lock.png -t")),
+	#Key([mod], "l",               lazy.spawn("gnome-screensaver-command -l")),
+	Key([], "Print",              lazy.spawn("scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
+	#Key([], "Print",              lazy.spawn("gnome-screenshot -i")),
 
-    # Toggle between MonadTall and Max layout
-    Key([mod], "f",               lazy.next_layout()),
+	# Toggle between MonadTall and Max layout
+	Key([mod], "f",               lazy.next_layout()),
 
-    Key([mod], "w",               lazy.window.kill()),
+	Key([mod], "w",               lazy.window.kill()),
 
-    Key([mod, "shift"], "r",      lazy.restart()),
-    Key([mod, "shift"], "e",      lazy.shutdown()),
-    #Key([mod, "shift"], "q",      lazy.spawn('gnome-session-quit --logout --no-prompt')),
-    #Key([mod], "agrave", lazy.spawn('gnome-session-quit --power-off')),
-    Key([mod], "r",               lazy.spawncmd()),
+	Key([mod, "shift"], "r",      lazy.restart()),
+	Key([mod, "shift"], "e",      lazy.shutdown()),
+	#Key([mod, "shift"], "q",      lazy.spawn('gnome-session-quit --logout --no-prompt')),
+	#Key([mod], "agrave", lazy.spawn('gnome-session-quit --power-off')),
+	Key([mod], "r",               lazy.spawncmd()),
 
-    # Cycle throught groups
-    Key([alt], "Tab",             lazy.screen.toggle_group()),
-    Key([alt], "Right",           lazy.screen.next_group()),
-    Key([alt], "Left",            lazy.screen.prev_group()),
+	# Cycle throught groups
+	Key([alt], "Tab",             lazy.screen.toggle_group()),
+	Key([alt], "Right",           lazy.screen.next_group()),
+	Key([alt], "Left",            lazy.screen.prev_group()),
 
 
-    # Sound control
-    Key([], "XF86AudioRaiseVolume",  lazy.spawn("pactl set-sink-volume 0 +5%")),
-    Key([], "XF86AudioLowerVolume",  lazy.spawn("pactl set-sink-volume 0 -5%")),
-    Key([], "XF86AudioMute",         lazy.spawn("pactl set-sink-mute 0 toggle")),
+	# Sound control
+	Key([], "XF86AudioRaiseVolume",  lazy.spawn("pactl set-sink-volume 0 +5%")),
+	Key([], "XF86AudioLowerVolume",  lazy.spawn("pactl set-sink-volume 0 -5%")),
+	Key([], "XF86AudioMute",         lazy.spawn("pactl set-sink-mute 0 toggle")),
 
-    # Monitor Brightness control
-    Key([], "XF86MonBrightnessUp",   lazy.function(backlight('inc'))),
-    Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec'))),
+	# Monitor Brightness control
+	Key([], "XF86MonBrightnessUp",   lazy.function(backlight('inc'))),
+	Key([], "XF86MonBrightnessDown", lazy.function(backlight('dec'))),
 
-    # Projector
-    #Key([mod], "p",               lazy.spawn("xrandr --output HDMI-1-2 --auto --same-as eDP-1-1")),
-    
-    #Key([mod], "x", lazy.spawn("urxvt -e cmatrix"))
+	# Projector
+	#Key([mod], "p",               lazy.spawn("xrandr --output HDMI-1-2 --auto --same-as eDP-1-1")),
+	
+	#Key([mod], "x", lazy.spawn("urxvt -e cmatrix"))
 ]
 
 group_names = "123456789"
 group_keys = [
-    "ampersand",
-    "eacute",
-    "quotedbl",
-    "apostrophe",
-    "parenleft",
-    "section",
-    "egrave",
-    "exclam",
-    "ccedilla"
+	"ampersand",
+	"eacute",
+	"quotedbl",
+	"apostrophe",
+	"parenleft",
+	"section",
+	"egrave",
+	"exclam",
+	"ccedilla"
 ]
 
 groups = [Group(i) for i in group_names]
 
 for name, key in zip(group_names, group_keys):
-    keys.append(Key([mod], key, lazy.group[name].toscreen()))
-    keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
+	keys.append(Key([mod], key, lazy.group[name].toscreen()))
+	keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
 layouts = [
-    layout.MonadTall(ratio=0.6, single_border_width=2),
-    layout.Max()
+	layout.MonadTall(ratio=0.6, single_border_width=2),
+	layout.Max()
 ]
 
 #groups.append(
@@ -183,54 +183,54 @@ layouts = [
 #
 
 widget_defaults = dict(
-    font='Mononoki',
-    fontsize=16,
-    padding=3,
-    background=colors["background"]
+	font='Mononoki',
+	fontsize=16,
+	padding=3,
+	background=colors["background"]
 )
 powerline = 28
 icon = 20
 screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.GroupBox(),
-                widget.TextBox(text='  ', fontsize=powerline),
-                widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
-                widget.WindowName(),
-                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
-                widget.TextBox(text='\uf240', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-                widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["white1"], foreground=colors["background"]),
-                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"]),
-                widget.TextBox(text='\uf240', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-                widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["white1"], foreground=colors["background"]),
-                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"], padding=-1),
-                widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white1"], padding=0, font="Font Awesome"),
-                widget.Net(interface='wlp3s0'),
-                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
-                widget.TextBox(text='\uf028', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-                widget.Volume(background=colors["white1"], foreground=colors["black1"], padding=10),
-                widget.TextBox(text='', fontsize=powerline, background=colors["white1"], foreground=colors["background"], padding=-1),
-                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
-                widget.Systray(),
-                widget.TextBox(text=' ', fontsize=powerline, foreground=colors["white1"], padding=-1),
-                widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-                widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
-            ],
-            30,
-        ),
-        right=bar.Gap(0)
-    ),
-    Screen(bottom=bar.Bar([widget.GroupBox()],30))
+	Screen(
+		bottom=bar.Bar(
+			[
+				widget.GroupBox(),
+				widget.TextBox(text='', fontsize=powerline, foreground=colors["background"], background=colors["magenta1"], padding=-1),
+				widget.CurrentLayout(background=colors["magenta1"], padding=10),
+				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["magenta1"], padding=-1),
+				widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
+				widget.WindowName(),
+				widget.Systray(),
+				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["yellow1"], padding=-1),
+				widget.TextBox(text='\uf240', fontsize=icon, background=colors["yellow1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+				widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["yellow1"], foreground=colors["background"]),
+				widget.TextBox(text='', fontsize=powerline, background=colors["yellow1"], foreground=colors["blue2"], padding=-1),
+				widget.TextBox(text='\uf240', fontsize=icon, background=colors["blue2"], foreground=colors["white2"], padding=0, font="Font Awesome"),
+				widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["blue2"], foreground=colors["white2"]),
+				widget.TextBox(text='', fontsize=powerline, background=colors["blue2"], foreground=colors["magenta1"], padding=-1),
+				widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white2"], background=colors["magenta1"], padding=0, font="Font Awesome"),
+				widget.Net(interface='wlp3s0', background=colors["magenta1"], foreground=colors["white2"]),
+				widget.TextBox(text='', fontsize=powerline, foreground=colors["cyan1"], background=colors["magenta1"], padding=-1),
+				widget.TextBox(text='\uf028', fontsize=icon, background=colors["cyan1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+				widget.Volume(background=colors["cyan1"], foreground=colors["black1"], padding=10),
+				widget.TextBox(text='', fontsize=powerline, foreground=colors["white1"], background=colors["cyan1"], padding=-1),
+				widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+				widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
+			],
+			30,
+		),
+		right=bar.Gap(0)
+	),
+	Screen(bottom=bar.Bar([widget.GroupBox()],30))
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-        start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-        start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+	Drag([mod], "Button1", lazy.window.set_position_floating(),
+		start=lazy.window.get_position()),
+	Drag([mod], "Button3", lazy.window.set_size_floating(),
+		start=lazy.window.get_size()),
+	Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
@@ -259,12 +259,12 @@ subprocess.call('xrandr --output HDMI-1-2 --auto --right-of eDP-1-1'.split(' '))
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+	home = os.path.expanduser('~')
+	subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
-    qtile.cmd_restart()
+	qtile.cmd_restart()
 
 # @hook.subscribe.startup
 # def dbus_register():
