@@ -30,6 +30,7 @@ from libqtile import layout, bar, widget, hook
 import os
 import subprocess
 import socket
+import netifaces as net
 
 mod = "mod4"
 alt = "mod1"
@@ -182,46 +183,139 @@ layouts = [
 #    ScratchPad("scratchpad", [
 #
 
+def netInfo(interface):
+	def fun():
+		if interface not in net.interfaces():
+			return 'no interfaces named {}'.format(interface)
+		adresses = net.ifaddresses(interface)
+
+		if net.AF_INET not in adresses:
+			return 'down'
+
+		address = net.ifaddresses(interface)[net.AF_INET][0]['addr']
+		return address
+	return fun
+
+bar_widgets = [
+	{
+		"widget": widget.GroupBox(padding=3)
+	},
+	{
+		"separator": "right",
+		"widget": widget.CurrentLayout(),
+		"background": colors["magenta1"],
+		"foreground":colors["white2"]
+	},
+	{
+		"separator": "right",
+		"widget": widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname()))
+	},
+	{
+		"widget": widget.WindowName()
+	},
+	{
+		"widget": widget.Systray()
+	},
+	{
+		"widget": widget.TextBox(text=' ', padding=0)
+	},
+	{
+		"separator": "left",
+		"widget": widget.Battery(battery_name="BAT1", charge_char="", discharge_char=""),
+		"background": colors["yellow1"],
+		"foreground": colors["background"],
+		"icon": "\uf584"
+	},
+	{
+		"widget": widget.Battery(battery_name="BAT0", charge_char="", discharge_char=""),
+		"background": colors["yellow1"],
+		"foreground": colors["background"],
+		"icon": "\uf583"
+	},
+	{
+		"separator": "left",
+		"widget": widget.GenPollText(func=netInfo('wlp3s0'), update_interval=10),
+		"background": colors["magenta1"],
+		"foreground":colors["white2"],
+		"icon": "\uf1eb"
+	},
+	{
+		"widget": widget.GenPollText(func=netInfo('enp0s31f6'), update_interval=10),
+		"background": colors["magenta1"],
+		"foreground":colors["white2"],
+		"icon": "\uf6ff"
+	},
+	{
+		"separator": "left",
+		"widget": widget.Volume(),
+		"background": colors["blue2"],
+		"foreground": colors["white2"],
+		"icon": "\uf028"
+	},
+	{
+		"separator": "left",
+		"widget": widget.Clock(format='%d-%m-%Y %a %H:%M'),
+		"background": colors["white1"],
+		"foreground": colors["black1"],
+		"icon": "\uf017"
+	}
+]
+
+powerline_left_colors = []
+
+powerline_right_colors = [
+	{"background": colors["white1"], "foreground": colors["black1"]},
+	{"background": colors["cyan1"], "foreground": colors["black1"]},
+	{"background": colors["magenta1"], "foreground":colors["white2"]},
+	{"background": colors["blue2"], "foreground": colors["white2"]},
+	{"background": colors["yellow1"], "foreground": colors["background"]}
+]
+
+def make_powerline(widgets):
+	res = []
+	prevBackground = None
+	background = colors["background"]
+	foreground = colors["foreground"]
+
+	for segment in widgets:
+		if "background" in segment:
+			background = segment["background"]
+		else:
+			background = colors["background"]
+			
+		if "foreground" in segment:
+			foreground = segment["foreground"]
+		else:
+			foreground = colors["foreground"]
+
+		if "separator" in segment:
+			if segment["separator"] == "left":
+				res.append(widget.TextBox(text='', fontsize=28, background=prevBackground, foreground=background, padding=-1))
+			else:
+				res.append(widget.TextBox(text='', fontsize=28, foreground=prevBackground, background=background, padding=-1))
+
+		if "icon" in segment:
+			res.append(widget.TextBox(text=segment['icon'], fontsize=20, foreground=foreground, background=background, padding=3))
+
+		w = segment["widget"]
+		w.background = background
+		prevBackground = background
+		w.foreground = foreground
+
+		res.append(w)
+		
+	return res
+
 widget_defaults = dict(
-	font='Mononoki',
+	font='Mononoki Nerd Font',
 	fontsize=16,
-	padding=3,
+	padding=10,
 	background=colors["background"]
 )
-powerline = 28
-icon = 20
+
 screens = [
-	Screen(
-		bottom=bar.Bar(
-			[
-				widget.GroupBox(),
-				widget.TextBox(text='', fontsize=powerline, foreground=colors["background"], background=colors["magenta1"], padding=-1),
-				widget.CurrentLayout(background=colors["magenta1"], padding=10),
-				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["magenta1"], padding=-1),
-				widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
-				widget.WindowName(),
-				widget.Systray(),
-				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["yellow1"], padding=-1),
-				widget.TextBox(text='\uf240', fontsize=icon, background=colors["yellow1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-				widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["yellow1"], foreground=colors["background"]),
-				widget.TextBox(text='', fontsize=powerline, background=colors["yellow1"], foreground=colors["blue2"], padding=-1),
-				widget.TextBox(text='\uf240', fontsize=icon, background=colors["blue2"], foreground=colors["white2"], padding=0, font="Font Awesome"),
-				widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["blue2"], foreground=colors["white2"]),
-				widget.TextBox(text='', fontsize=powerline, background=colors["blue2"], foreground=colors["magenta1"], padding=-1),
-				widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white2"], background=colors["magenta1"], padding=0, font="Font Awesome"),
-				widget.Net(interface='wlp3s0', background=colors["magenta1"], foreground=colors["white2"]),
-				widget.TextBox(text='', fontsize=powerline, foreground=colors["cyan1"], background=colors["magenta1"], padding=-1),
-				widget.TextBox(text='\uf028', fontsize=icon, background=colors["cyan1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-				widget.Volume(background=colors["cyan1"], foreground=colors["black1"], padding=10),
-				widget.TextBox(text='', fontsize=powerline, foreground=colors["white1"], background=colors["cyan1"], padding=-1),
-				widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-				widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
-			],
-			30,
-		),
-		right=bar.Gap(0)
-	),
-	Screen(bottom=bar.Bar([widget.GroupBox()],30))
+	Screen(bottom=bar.Bar(make_powerline(bar_widgets), 30)),
+	Screen(bottom=bar.Bar([widget.GroupBox()], 30))
 ]
 
 # Drag floating layouts.
@@ -279,3 +373,30 @@ def restart_on_randr(qtile, ev):
 #                      'org.gnome.SessionManager.RegisterClient',
 #                      'string:qtile',
 #                      'string:' + id])
+
+
+# [
+# 				widget.GroupBox(),
+# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["background"], background=colors["magenta1"], padding=-1),
+# 				widget.CurrentLayout(background=colors["magenta1"], padding=10),
+# 				widget.GenPollText(background=colors["magenta1"], padding=10, func=lambda: "hello \uf242"),
+# 				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["magenta1"], padding=-1),
+# 				widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
+# 				widget.WindowName(),
+# 				widget.Systray(),
+# 				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["yellow1"], padding=-1),
+# 				widget.TextBox(text='\uf240', fontsize=icon, background=colors["yellow1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+# 				widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["yellow1"], foreground=colors["background"]),
+# 				widget.TextBox(text='', fontsize=powerline, background=colors["yellow1"], foreground=colors["blue2"], padding=-1),
+# 				widget.TextBox(text='\uf240', fontsize=icon, background=colors["blue2"], foreground=colors["white2"], padding=0, font="Font Awesome"),
+# 				widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["blue2"], foreground=colors["white2"]),
+# 				widget.TextBox(text='', fontsize=powerline, background=colors["blue2"], foreground=colors["magenta1"], padding=-1),
+# 				widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white2"], background=colors["magenta1"], padding=0, font="Font Awesome"),
+# 				widget.Net(interface='wlp3s0', background=colors["magenta1"], foreground=colors["white2"]),
+# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["cyan1"], background=colors["magenta1"], padding=-1),
+# 				widget.TextBox(text='\uf028', fontsize=icon, background=colors["cyan1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+# 				widget.Volume(background=colors["cyan1"], foreground=colors["black1"], padding=10),
+# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["white1"], background=colors["cyan1"], padding=-1),
+# 				widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
+# 				widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
+# 			]
