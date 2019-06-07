@@ -2,8 +2,8 @@ Xft.dpi: 140
 !
 ! Colors
 *.foreground:  #ffffff
-*.background:  #132738
-*.cursorColor: #f0cc09
+*.background:  #182b3a
+*.cursorColor: #f1c423
 !
 ! Black
 *.color0:      #000000
@@ -11,31 +11,31 @@ Xft.dpi: 140
 !
 ! Red
 *.color1:      #ff0000
-*.color9:      #f40e17
+*.color9:      #ff638a
 !
 ! Green
 *.color2:      #38de21
-*.color10:     #3bd01d
+*.color10:     #41d720
 !
 ! Yellow
 *.color3:      #ffe50a
-*.color11:     #edc809
+*.color11:     #fec51e
 !
 ! Blue
 *.color4:      #1460d2
-*.color12:     #5555ff
+*.color12:     #0186fd
 !
 ! Magenta
 *.color5:      #ff005d
-*.color13:     #ff55ff
+*.color13:     #fa95ff
 !
 ! Cyan
 *.color6:      #00bbbb
-*.color14:     #6ae3fa
+*.color14:     #7cfcfd
 !
 ! White
-*.color7:      #bbbbbb
-*.color15:     #ffffff
+*.color7:      #ffffff
+*.color15:     #bbbbbb
 !
 ! Bold, Italic, Underline
 *.colorBD:     #f7fcff
@@ -48,5 +48,5 @@ urxvt.keysym.C-Up:     perl:font-size:increase
 urxvt.keysym.C-Down:   perl:font-size:decrease
 urxvt.keysym.C-S-Up:   perl:font-size:incglobal
 urxvt.keysym.C-S-Down: perl:font-size:decglobal
-urxvt.font:            xft:Mononoki:size=11
-urxvt.boldFont:        xft:Mononoki:size=11
+urxvt.font:            xft:mononoki Nerd Font Mono:size=11
+urxvt.boldFont:        xft:mononoki Nerd Font Mono:size=11

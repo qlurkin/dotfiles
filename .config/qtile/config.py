@@ -37,26 +37,49 @@ alt = "mod1"
 
 colors = {
 	"foreground": "#ffffff",
-	"background": "#132738",
-	"cursor": "#f0cc09",
+	"background": "#182b3a",
+	"cursor": "#f1c423",
 	"black1": "#000000",
-	"black2": "#555555",
-	"red1": "#ff0000",
-	"red2": "#f40e17",
-	"green1": "#38de21",
-	"green2": "#3bd01d",
-	"yellow1": "#ffe50a",
-	"yellow2": "#edc809",
-	"blue1": "#1460d2",
-	"blue2": "#5555ff",
-	"magenta1": "#ff005d",
-	"magenta2": "#ff55ff",
-	"cyan1": "#00bbbb",
-	"cyan2": "#6ae3fa",
-	"white1": "#bbbbbb",
-	"white2": "#ffffff",
+	"black2": "#555555", 
+	"red1": "#ff0000",  
+	"red2": "#ff638a",
+	"green1": "#38de21", 
+	"green2": "#41d720",
+	"yellow1": "#ffe50a", 
+	"yellow2": "#fec51e",
+	"blue1": "#1460d2", 
+	"blue2": "#0186fd",
+	"magenta1": "#ff005d", 
+	"magenta2": "#fa95ff",
+	"cyan1": "#00bbbb", 
+	"cyan2": "#7cfcfd",
+	"white1": "#ffffff", 
+	"white2": "#bbbbbb", 
 	"bold": "#f7fcff"
 }
+
+# colors = {
+# 	"foreground": "#ffffff",
+# 	"background": "#132738", #182b3a
+# 	"cursor": "#f0cc09", #f1c423
+# 	"black1": "#000000",
+# 	"black2": "#555555", #0051a2
+# 	"red1": "#ff0000",  #ff638a
+# 	"red2": "#f40e17",
+# 	"green1": "#38de21", #41d720
+# 	"green2": "#3bd01d",
+# 	"yellow1": "#ffe50a", #fec51e
+# 	"yellow2": "#edc809",
+# 	"blue1": "#1460d2", #0186fd
+# 	"blue2": "#5555ff",
+# 	"magenta1": "#ff005d", #fa95ff
+# 	"magenta2": "#ff55ff",
+# 	"cyan1": "#00bbbb", #7cfcfd
+# 	"cyan2": "#6ae3fa",
+# 	"white1": "#bbbbbb", #ffffff
+# 	"white2": "#ffffff", #bbbbbb
+# 	"bold": "#f7fcff"
+# }
 
 def backlight(action):
 	def f(qtile):
@@ -70,29 +93,6 @@ def backlight(action):
 			else:
 				subprocess.run(['xbacklight', f'-{action}', '1'])
 	return f
-
-# def projection():
-#     proj_modes = [
-#         "xrandr --output HDMI-1-2 --off",
-#         "xrandr --output HDMI-1-2 --auto --right-of eDP-1-1",
-#         "xrandr --output HDMI-1-2 --auto --same-as eDP-1-1"
-#     ]
-
-#     proj_mode_index = 0
-
-#     def f(qtile):
-#         nonlocal proj_mode_index
-#         proj_mode_index = (proj_mode_index+1) % len(proj_modes)
-#         subprocess.run(proj_modes[proj_mode_index].split(' '))
-
-#     return f
-
-# def matrix():
-#     def f(qtile):
-#         pass
-#         #subprocess.call("urxvt -e cmatrix".split())
-
-#     return f
 
 keys = [
 	# Switch between windows in current stack pane
@@ -175,13 +175,9 @@ for name, key in zip(group_names, group_keys):
 	keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
 layouts = [
-	layout.MonadTall(ratio=0.6, single_border_width=2),
+	layout.MonadTall(ratio=0.6, single_border_width=2, border_focus=colors["magenta1"]),
 	layout.Max()
 ]
-
-#groups.append(
-#    ScratchPad("scratchpad", [
-#
 
 def netInfo(interface):
 	def fun():
@@ -204,7 +200,7 @@ bar_widgets = [
 		"separator": "right",
 		"widget": widget.CurrentLayout(),
 		"background": colors["magenta1"],
-		"foreground":colors["white2"]
+		"foreground":colors["foreground"]
 	},
 	{
 		"separator": "right",
@@ -236,26 +232,26 @@ bar_widgets = [
 		"separator": "left",
 		"widget": widget.GenPollText(func=netInfo('wlp3s0'), update_interval=10),
 		"background": colors["magenta1"],
-		"foreground":colors["white2"],
+		"foreground":colors["foreground"],
 		"icon": "\uf1eb"
 	},
 	{
 		"widget": widget.GenPollText(func=netInfo('enp0s31f6'), update_interval=10),
 		"background": colors["magenta1"],
-		"foreground":colors["white2"],
+		"foreground":colors["foreground"],
 		"icon": "\uf6ff"
 	},
 	{
 		"separator": "left",
 		"widget": widget.Volume(),
-		"background": colors["blue2"],
-		"foreground": colors["white2"],
+		"background": colors["blue1"],
+		"foreground": colors["foreground"],
 		"icon": "\uf028"
 	},
 	{
 		"separator": "left",
 		"widget": widget.Clock(format='%d-%m-%Y %a %H:%M'),
-		"background": colors["white1"],
+		"background": colors["white2"],
 		"foreground": colors["black1"],
 		"icon": "\uf017"
 	}
@@ -338,15 +334,6 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 extentions = []
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, github issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
-#wmname = "LG3D"
 wmname = 'qtile'
 
 subprocess.call('xrandr --output HDMI-1-2 --auto --right-of eDP-1-1'.split(' '))
@@ -359,44 +346,3 @@ def start_once():
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
 	qtile.cmd_restart()
-
-# @hook.subscribe.startup
-# def dbus_register():
-#    id = os.environ.get('DESKTOP_AUTOSTART_ID')
-#    if not id:
-#        return
-#    subprocess.Popen(['dbus-send',
-#                      '--session',
-#                      '--print-reply',
-#                      '--dest=org.gnome.SessionManager',
-#                      '/org/gnome/SessionManager',
-#                      'org.gnome.SessionManager.RegisterClient',
-#                      'string:qtile',
-#                      'string:' + id])
-
-
-# [
-# 				widget.GroupBox(),
-# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["background"], background=colors["magenta1"], padding=-1),
-# 				widget.CurrentLayout(background=colors["magenta1"], padding=10),
-# 				widget.GenPollText(background=colors["magenta1"], padding=10, func=lambda: "hello \uf242"),
-# 				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["magenta1"], padding=-1),
-# 				widget.Prompt(prompt="{0}@{1}: ".format(os.environ["USER"], socket.gethostname())),
-# 				widget.WindowName(),
-# 				widget.Systray(),
-# 				widget.TextBox(text=' ', fontsize=powerline, foreground=colors["yellow1"], padding=-1),
-# 				widget.TextBox(text='\uf240', fontsize=icon, background=colors["yellow1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-# 				widget.Battery(battery_name="BAT1", charge_char="", discharge_char="", background=colors["yellow1"], foreground=colors["background"]),
-# 				widget.TextBox(text='', fontsize=powerline, background=colors["yellow1"], foreground=colors["blue2"], padding=-1),
-# 				widget.TextBox(text='\uf240', fontsize=icon, background=colors["blue2"], foreground=colors["white2"], padding=0, font="Font Awesome"),
-# 				widget.Battery(battery_name="BAT0", charge_char="", discharge_char="", background=colors["blue2"], foreground=colors["white2"]),
-# 				widget.TextBox(text='', fontsize=powerline, background=colors["blue2"], foreground=colors["magenta1"], padding=-1),
-# 				widget.TextBox(text='\uf1eb', fontsize=icon, foreground=colors["white2"], background=colors["magenta1"], padding=0, font="Font Awesome"),
-# 				widget.Net(interface='wlp3s0', background=colors["magenta1"], foreground=colors["white2"]),
-# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["cyan1"], background=colors["magenta1"], padding=-1),
-# 				widget.TextBox(text='\uf028', fontsize=icon, background=colors["cyan1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-# 				widget.Volume(background=colors["cyan1"], foreground=colors["black1"], padding=10),
-# 				widget.TextBox(text='', fontsize=powerline, foreground=colors["white1"], background=colors["cyan1"], padding=-1),
-# 				widget.TextBox(text='\uf017', fontsize=icon, background=colors["white1"], foreground=colors["background"], padding=0, font="Font Awesome"),
-# 				widget.Clock(format='%d-%m-%Y %a %H:%M', background=colors["white1"], foreground=colors["black1"], padding=10),
-# 			]

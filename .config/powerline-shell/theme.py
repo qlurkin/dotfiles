@@ -1,0 +1,62 @@
+from powerline_shell.themes.default import DefaultColor
+
+
+class Color(DefaultColor):
+	"""Basic theme which only uses colors in 0-15 range"""
+	USERNAME_FG = 7
+	USERNAME_BG = 8
+	USERNAME_ROOT_BG = 1
+
+	HOSTNAME_FG = 15
+	HOSTNAME_BG = 0
+
+	HOME_SPECIAL_DISPLAY = True
+	HOME_BG = 12
+	HOME_FG = 7
+	PATH_BG = 8  # dark grey
+	PATH_FG = 7  # light grey
+	CWD_FG = 7  # white
+	SEPARATOR_FG = 7
+
+	READONLY_BG = 1
+	READONLY_FG = 15
+
+	REPO_CLEAN_BG = 2   # green
+	REPO_CLEAN_FG = 0   # black
+	REPO_DIRTY_BG = 5   # red
+	REPO_DIRTY_FG = 7  # white
+
+	JOBS_FG = 14
+	JOBS_BG = 8
+
+	CMD_PASSED_BG = 8
+	CMD_PASSED_FG = 15
+	CMD_FAILED_BG = 11
+	CMD_FAILED_FG = 0
+
+	SVN_CHANGES_BG = REPO_DIRTY_BG
+	SVN_CHANGES_FG = REPO_DIRTY_FG
+
+	GIT_AHEAD_BG = 240
+	GIT_AHEAD_FG = 250
+	GIT_BEHIND_BG = 240
+	GIT_BEHIND_FG = 250
+	GIT_STAGED_BG = 22
+	GIT_STAGED_FG = 15
+	GIT_NOTSTAGED_BG = 11
+	GIT_NOTSTAGED_FG = 0
+	GIT_UNTRACKED_BG = 6
+	GIT_UNTRACKED_FG = 0
+	GIT_CONFLICTED_BG = 9
+	GIT_CONFLICTED_FG = 15
+	GIT_STASH_BG = 221
+	GIT_STASH_FG = 0
+
+	VIRTUAL_ENV_BG = 10
+	VIRTUAL_ENV_FG = 0
+
+	AWS_PROFILE_FG = 14
+	AWS_PROFILE_BG = 8
+
+	TIME_FG = 8
+	TIME_BG = 7
