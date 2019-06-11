@@ -217,13 +217,13 @@ bar_widgets = [
 	},
 	{
 		"separator": "left",
-		"widget": widget.Battery(battery_name="BAT1", charge_char="", discharge_char=""),
+		"widget": widget.Battery(battery_name="BAT1", charge_char="\uf062", discharge_char="\uf063"),
 		"background": colors["yellow1"],
 		"foreground": colors["background"],
 		"icon": "\uf584"
 	},
 	{
-		"widget": widget.Battery(battery_name="BAT0", charge_char="", discharge_char=""),
+		"widget": widget.Battery(battery_name="BAT0", charge_char="\uf062", discharge_char="\uf063"),
 		"background": colors["yellow1"],
 		"foreground": colors["background"],
 		"icon": "\uf583"
