@@ -121,6 +121,8 @@ keys = [
 	Key([mod], "l",               lazy.spawn("i3lock -i /home/ql/.config/qtile/lock.png -t")),
 	#Key([mod], "l",               lazy.spawn("gnome-screensaver-command -l")),
 	Key([], "Print",              lazy.spawn("scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
+	Key([alt], "Print",           lazy.spawn("scrot -s '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
+	#Key(["shift"], "Print",       lazy.spawn("scrot -s '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'")),
 	#Key([], "Print",              lazy.spawn("gnome-screenshot -i")),
 
 	# Toggle between MonadTall and Max layout
