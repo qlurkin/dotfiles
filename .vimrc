@@ -5,7 +5,6 @@ set encoding=utf-8
 set relativenumber
 set number
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 set belloff=all
 set cul
 set tabstop=4 softtabstop=4
@@ -24,9 +23,6 @@ set path+=**
 set wildmenu
 set backspace=2
 set hidden
-
-" set colorcolumn=80
-" highlight Colorcolumn ctermbg=0 guibg=lightgray
 
 call plug#begin('~/vimfiles/plugged')
 
