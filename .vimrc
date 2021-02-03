@@ -1,7 +1,6 @@
 syntax on
 
 set nocompatible
-filetype plugin on
 set encoding=utf-8
 set relativenumber
 set number
@@ -73,6 +72,22 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 " COC CONFIG
 
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-emmet',
+  \ 'coc-highlight',
+  \ 'coc-lists',
+  \ 'coc-git',
+  \ 'coc-yank',
+  \ 'coc-python', 
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-tabnine',
+  \ 'coc-json', 
+  \ ]
+
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -100,7 +115,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
