@@ -1,6 +1,19 @@
 syntax on
 
 set backspace=indent,eol,start
+set encoding=utf-8
+set relativenumber
+set number
+set cul
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set smartindent
+set noswapfile
+set nobackup
+set nowritebackup
+set path+=**
+set wildmenu
+set hidden
 
 filetype plugin on
 
