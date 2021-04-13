@@ -22,11 +22,5 @@ set nowritebackup
 set path+=**
 set wildmenu
 set hidden
-
-" Let's make it easy to edit this file (mnemonic for the key sequence is
-" 'e'dit 'v'imrc)
-nmap <silent> ,ev :e $MYVIMRC<cr>
-
-" And to source this file as well (mnemonic for the key sequence is
-" 's'ource 'v'imrc)
-nmap <silent> ,sv :so $MYVIMRC<cr>
+set noerrorbells visualbell t_vb=
+set belloff=all
