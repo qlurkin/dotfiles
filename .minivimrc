@@ -1,5 +1,13 @@
+set nocompatible
+
+filetype on
+filetype plugin on
+filetype indent on
+
 syntax on
 
+set lazyredraw
+set showmode
 set backspace=indent,eol,start
 set encoding=utf-8
 set relativenumber
@@ -15,5 +23,10 @@ set path+=**
 set wildmenu
 set hidden
 
-filetype plugin on
+" Let's make it easy to edit this file (mnemonic for the key sequence is
+" 'e'dit 'v'imrc)
+nmap <silent> ,ev :e $MYVIMRC<cr>
 
+" And to source this file as well (mnemonic for the key sequence is
+" 's'ource 'v'imrc)
+nmap <silent> ,sv :so $MYVIMRC<cr>
