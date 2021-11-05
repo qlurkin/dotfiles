@@ -4,7 +4,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set smartindent
 set number
-set cursorline
+" set cursorline
 set nohlsearch
 set hidden
 set noerrorbells
@@ -15,13 +15,19 @@ set incsearch
 set scrolloff=8
 set signcolumn=yes
 set path+=**
+set mouse=a
+set guifont=Fira\ Code
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r "remove right scroll bar
+set guioptions-=L "remove left scroll bar
 
 call plug#begin('~/vimfiles/plugged')
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'}
+Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-vsnip'
@@ -87,7 +93,7 @@ lua << EOF
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   local nvim_lsp = require('lspconfig')
-  local servers = { 'pyright' }
+  local servers = { 'pyright', 'clangd' }
 
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -130,3 +136,27 @@ nnoremap à }
 nnoremap ù ^
 nnoremap µ $
 nnoremap <C-ù> <C-^>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Theming
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight Normal           guifg=#dfdfdf guibg=#282c34
+highlight LineNr           guifg=#5b6268 guibg=#282c34
+highlight CursorLineNr     guifg=#202328 guifg=#5b6268
+highlight VertSplit        guifg=#1c1f24 guifg=#5b6268
+highlight Statement        guifg=#98be65 guibg=none
+highlight Directory        guifg=#51afef guibg=none
+highlight StatusLine       guifg=#202328 guifg=#5b6268
+highlight StatusLineNC     guifg=#202328 guifg=#5b6268
+highlight NERDTreeClosable guifg=#98be65
+highlight NERDTreeOpenable guifg=#5b6268
+highlight Comment          guifg=#51afef guibg=none
+highlight Constant         guifg=#3071db guibg=none
+highlight Special          guifg=#51afef guibg=none
+highlight Identifier       guifg=#5699af guibg=none
+highlight PreProc          guifg=#c678dd guibg=none
+highlight String           guifg=#3071db guibg=none
+highlight Number           guifg=#ff6c6b guibg=none
+highlight Function         guifg=#ff6c6b guibg=none
+highlight Visual           guifg=#dfdfdf guibg=#1c1f24
+highlight Pmenu            guifg=#cccccc guibg=#000000
