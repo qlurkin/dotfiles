@@ -1,3 +1,3 @@
 function fish_greeting
-	neofetch
+  /bin/cat ~/.config/fish/greeting_art
 end

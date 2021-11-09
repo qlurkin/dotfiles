@@ -1,10 +1,21 @@
-#set PATH $PATH "/home/ql/opt/android-studio/bin"
+eval (/opt/homebrew/bin/brew shellenv)
+set -x PATH "$HOME/.cargo/bin" $PATH
+set -x PATH "$HOME/bin" $PATH
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
 
-#set PATH $PATH "/home/ql/opt/flutter/bin"
+# Setting PATH for Python 3.9
+# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.9/bin" "$PATH"
 
-#set PATH "/home/ql/anaconda3/bin" $PATH
+thefuck --alias | source
+alias please="sudo"
+alias plz="sudo"
+alias ls="exa"
+alias cat="bat"
+alias python="python3"
 
-#set PYTHONPATH "$HOME/python-module" $PYTHONPATH
+fish_vi_key_bindings
 
-source "/home/ql/anaconda3/etc/fish/conf.d/conda.fish"
-conda activate base
+starship init fish | source
