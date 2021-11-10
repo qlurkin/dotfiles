@@ -12,9 +12,11 @@ set -x PATH "/Library/Frameworks/Python.framework/Versions/3.9/bin" "$PATH"
 thefuck --alias | source
 alias please="sudo"
 alias plz="sudo"
-alias ls="exa"
+alias ls="exa --group-directories-first"
 alias cat="bat"
 alias python="python3"
+alias vim="neovide"
+alias vi="neovide"
 
 fish_vi_key_bindings
 
