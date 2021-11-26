@@ -1,3 +1,3 @@
 function fish_greeting
-  /bin/cat ~/.config/fish/greeting_art
+  figlet -f "$HOME/.config/fish/Slant Relief.flf" LUR | lolcat
 end

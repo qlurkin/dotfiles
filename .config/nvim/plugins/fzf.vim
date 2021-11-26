@@ -20,3 +20,7 @@ nmap <leader>fh :History<cr>
 nmap <leader>fr :Rg<cr>
 nmap <leader>fR :Rg<space>
 nmap <leader>gb :GBranches<cr>
+
+nnoremap <leader>v :vsplit<CR>:Files<cr>
+nnoremap <leader>s :split<CR>:Files<cr>
+nnoremap <leader>o :Files<CR>

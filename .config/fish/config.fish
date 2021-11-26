@@ -20,6 +20,7 @@ alias py="python3"
 alias nv="neovide"
 alias vim="nvim"
 alias vi="nvim"
+alias matrix="r-matrix -r"
 
 fish_vi_key_bindings
 

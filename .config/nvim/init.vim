@@ -65,9 +65,9 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>v :Vex<CR>
-nnoremap <leader>s :Sex<CR>
-nnoremap <leader>o :Ex<CR>
+" nnoremap <leader>v :Vex<CR>
+" nnoremap <leader>s :Sex<CR>
+" nnoremap <leader>o :Ex<CR>
 
 nnoremap <silent> <leader>= :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
