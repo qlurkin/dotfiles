@@ -26,7 +26,3 @@ alias matrix="r-matrix -r"
 fish_vi_key_bindings
 
 starship init fish | source
-
-# Setting PATH for Python 3.10
-# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"

@@ -44,6 +44,7 @@ set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right scroll bar
 set guioptions-=L "remove left scroll bar
+let g:neovide_fullscreen=v:true
 set completeopt=menu,menuone,noselect
 
 "--------------------------------------------------------------------------
@@ -110,14 +111,16 @@ endif
 
 call plug#begin('~/vimfiles/plugged')
 
+source ~/.config/nvim/plugins/treesitter.vim
 source ~/.config/nvim/plugins/dracula.vim
-source ~/.config/nvim/plugins/lsp.vim
-" source ~/.config/nvim/plugins/coc.vim
+" source ~/.config/nvim/plugins/lsp.vim
+source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/lightline.vim
 source ~/.config/nvim/plugins/floatterm.vim
 source ~/.config/nvim/plugins/vim-be-good.vim
+source ~/.config/nvim/plugins/nerdtree.vim
 
 call plug#end()
 doautocmd User PlugLoaded
