@@ -25,4 +25,9 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-cmp'
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
+--    use 'simrat39/inlay-hints.nvim'
+    use 'simrat39/rust-tools.nvim'
+    use 'Pocco81/auto-save.nvim'
+    use 'nvim-lualine/lualine.nvim'
+    use 'j-hui/fidget.nvim'
 end)
