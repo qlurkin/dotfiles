@@ -34,4 +34,5 @@ return require('packer').startup(function(use)
     use 'j-hui/fidget.nvim'
     use 'TimUntersberger/neogit'
     use 'numToStr/Comment.nvim'
+    use 'akinsho/toggleterm.nvim'
 end)
