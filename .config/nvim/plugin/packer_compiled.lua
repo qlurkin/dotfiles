@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/Users/lur/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/lur/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -94,10 +99,20 @@ _G.packer_plugins = {
     path = "/Users/lur/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-latex-symbols"] = {
+    loaded = true,
+    path = "/Users/lur/.local/share/nvim/site/pack/packer/start/cmp-latex-symbols",
+    url = "https://github.com/kdheepak/cmp-latex-symbols"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/lur/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/Users/lur/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
@@ -124,15 +139,15 @@ _G.packer_plugins = {
     path = "/Users/lur/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
-  ["inlay-hints.nvim"] = {
-    loaded = true,
-    path = "/Users/lur/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
-    url = "https://github.com/simrat39/inlay-hints.nvim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/lur/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  neogit = {
+    loaded = true,
+    path = "/Users/lur/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
   },
   ["nvim-cmp"] = {
     loaded = true,
