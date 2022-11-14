@@ -35,4 +35,6 @@ return require('packer').startup(function(use)
     use 'TimUntersberger/neogit'
     use 'numToStr/Comment.nvim'
     use 'akinsho/toggleterm.nvim'
+    use 'MunifTanjim/nui.nvim'
+    use { 'nvim-neo-tree/neo-tree.nvim', branch = "v2.x" }
 end)
