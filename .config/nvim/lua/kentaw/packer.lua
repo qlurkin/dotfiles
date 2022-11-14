@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
     use 'Pocco81/auto-save.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'j-hui/fidget.nvim'
-    use 'TimUntersberger/neogit'
+    -- use 'TimUntersberger/neogit'
     use 'numToStr/Comment.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'MunifTanjim/nui.nvim'
