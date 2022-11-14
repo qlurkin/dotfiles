@@ -15,7 +15,7 @@ require("neo-tree").setup({
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
-    sort_case_insensitive = true, -- used when sorting files and directories in the tree
+    sort_case_insensitive = true, -- used when s--[[ o ]]rting files and directories in the tree
     sort_function = nil , -- use a custom function for sorting files and directories in the tree 
     -- sort_function = function (a,b)
     --       if a.type == b.type then
@@ -84,7 +84,7 @@ require("neo-tree").setup({
             nowait = true,
         },
         mappings = {
-            ["<space>"] = { 
+            ["<tab>"] = { 
                 "toggle_node", 
                 nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
             },
@@ -212,3 +212,4 @@ require("neo-tree").setup({
 vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree focus<cr>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Neotree buffers focus<cr>')
