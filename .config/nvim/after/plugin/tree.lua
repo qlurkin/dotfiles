@@ -11,7 +11,7 @@ require("neo-tree").setup({
         winbar = true,
         statusline = false
     },
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
@@ -196,7 +196,7 @@ require("neo-tree").setup({
     },
     git_status = {
         window = {
-            position = "float",
+            -- position = "float",
             mappings = {
                 ["A"]  = "git_add_all",
                 ["gu"] = "git_unstage_file",
