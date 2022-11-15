@@ -13,6 +13,7 @@ vim.keymap.set({'i', 's'}, '<C-j>', function ()
 end, {silent = true})
 
 ls.add_snippets("html", {
-    parse("slide", "<section>\n    <h2>$1</h2>\n    $0\n</section>\n")
+    parse("slide", "<section>\n   <h2>$1</h2>\n   $0\n</section>\n")
+    parse("code", "<pre><code class=\"lang-$1\">\n   $0</code></pre>\n")
 })
 
