@@ -1,5 +1,4 @@
 local ls = require('luasnip')
-local parse = require("luasnip.util.parser").parse_snippet
 
 ls.config.set_config({
     history = false,
@@ -12,8 +11,9 @@ vim.keymap.set({'i', 's'}, '<C-j>', function ()
     end
 end, {silent = true})
 
-ls.add_snippets("html", {
-    parse("slide", "<section>\n   <h2>$1</h2>\n   $0\n</section>\n")
-    parse("code", "<pre><code class=\"lang-$1\">\n   $0</code></pre>\n")
-})
+-- Load Snippets From Other Plugins
+require("luasnip.loaders.from_vscode").lazy_load()
 
+-- require("luasnip.loaders.from_vscode").load({ paths = { "./snippets" } })
+
+require('kentaw.snippets')

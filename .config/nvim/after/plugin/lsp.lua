@@ -116,15 +116,15 @@ lsp.gopls.setup({
 })
 
 -- html
-local html_cap = vim.lsp.protocol.make_client_capabilities()
-html_cap.textDocument.completion.completionItem.snippetSupport = true
+-- local html_cap = vim.lsp.protocol.make_client_capabilities()
+-- html_cap.textDocument.completion.completionItem.snippetSupport = true
 
-lsp.html.setup {
-    capabilities = html_cap,
-    on_attach = function ()
-        common_remap(0)
-    end
-
-}
-
-lsp.emmet_ls.setup{}
+-- lsp.html.setup {
+--     capabilities = html_cap,
+--     on_attach = function ()
+--         common_remap(0)
+--     end
+--
+-- }
+--
+-- lsp.emmet_ls.setup{}
