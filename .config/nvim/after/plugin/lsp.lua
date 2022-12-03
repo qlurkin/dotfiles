@@ -49,12 +49,19 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Python
-lsp.pyright.setup({
+-- lsp.pyright.setup({
+--     capabilities = capabilities,
+--     on_attach = function ()
+--         common_remap(0)
+--     end
+-- })
+
+lsp.jedi_language_server.setup{
     capabilities = capabilities,
     on_attach = function ()
         common_remap(0)
     end
-})
+}
 
 -- Rust
 local rt = require("rust-tools")
