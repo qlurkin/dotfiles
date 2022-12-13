@@ -38,4 +38,5 @@ return require('packer').startup(function(use)
     use 'MunifTanjim/nui.nvim'
     use { 'nvim-neo-tree/neo-tree.nvim', branch = "v2.x" }
     use 'rafamadriz/friendly-snippets'
+    use 'da-moon/telescope-toggleterm.nvim'
 end)
