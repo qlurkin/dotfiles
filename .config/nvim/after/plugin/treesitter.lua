@@ -25,6 +25,7 @@ require'nvim-treesitter.configs'.setup {
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
+  indent = { enable = true },
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
@@ -52,10 +53,10 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<CR>',
-      scope_incremental = '<CR>',
-      node_incremental = '<TAB>',
-      node_decremental = '<S-TAB>',
+      init_selection = '<c-space>',
+      scope_incremental = '<c-s>',
+      node_incremental = '<c-space>',
+      node_decremental = '<c-backspace>',
     },
   },
 }

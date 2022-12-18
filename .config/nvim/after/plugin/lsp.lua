@@ -1,3 +1,9 @@
+require('mason.settings').set({
+  ui = {
+    border = 'rounded'
+  }
+})
+
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -20,39 +26,62 @@ lsp.configure('sumneko_lua', {
     }
 })
 
+
+lsp.on_attach(function(_, bufnr)
+    local nmap = function(keys, func, desc)
+        if desc then
+            desc = 'LSP: ' .. desc
+        end
+
+        vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
+    end
+
+    local tb = require('telescope.builtin')
+    nmap("gr", tb.lsp_references, '[G]oto [R]eferences')
+    nmap("gj", vim.diagnostic.goto_next, 'Next Diagnostics')
+    nmap("gk", vim.diagnostic.goto_prev, 'Previous Diagnostics')
+    nmap("gs", tb.lsp_document_symbols, 'Document [S]ymbols')
+    nmap('gw', tb.lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
+    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+    -- Create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+        if vim.lsp.buf.format then
+            vim.lsp.buf.format()
+        elseif vim.lsp.buf.formatting then
+            vim.lsp.buf.formatting()
+        end
+    end, { desc = 'Format current buffer with LSP' })
+end)
+
+
 local rust_lsp = lsp.build_options('rust_analyzer', {})
 
 lsp.setup()
 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = {'menuone', 'noselect'}
 
 local cmp = require('cmp')
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-e>'] = cmp.mapping.abort(),
+})
+
+cmp_mappings['<CR>'] = nil
+cmp_mappings['<Tab>'] = cmp.mapping.confirm({ select = true })
+cmp_mappings['<S-Tab>'] = nil
+
 local cmp_config = lsp.defaults.cmp_config({
-  window = {
-    completion = cmp.config.window.bordered()
-  },
-  experimental = {
-      ghost_text = true
-  }
+    window = {
+        completion = cmp.config.window.bordered()
+    },
+    experimental = {
+        ghost_text = true
+    },
+    mapping = cmp_mappings,
 })
 
 cmp.setup(cmp_config)
 
--- local common_remap = function (bufnr)
---     vim.keymap.set('n', "K", vim.lsp.buf.hover, {buffer = bufnr})
---     vim.keymap.set('n', "<leader>sh", vim.lsp.buf.signature_help, {buffer = bufnr})
---     vim.keymap.set('n', "gd", vim.lsp.buf.definition, {buffer = bufnr})
---     vim.keymap.set('n', "gt", vim.lsp.buf.type_definition, {buffer = bufnr})
---     vim.keymap.set('n', "gi", vim.lsp.buf.implementation, {buffer = bufnr})
---     vim.keymap.set('n', "gr", '<cmd>Telescope lsp_references<cr>', {buffer = bufnr})
---     vim.keymap.set('n', "<leader>dj", vim.diagnostic.goto_next, {buffer = bufnr})
---     vim.keymap.set('n', "<leader>dk", vim.diagnostic.goto_prev, {buffer = bufnr})
---     vim.keymap.set('n', "<leader>dl", '<cmd>Telescope diagnostics<cr>', {buffer = bufnr})
---     vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, {buffer = bufnr})
---     vim.keymap.set('n', "<leader>ca", vim.lsp.buf.code_action, {buffer = bufnr})
---     vim.keymap.set('n', "<leader>F", function () vim.lsp.buf.format({ async = true }) end, {buffer = bufnr})
--- end
---
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Python
