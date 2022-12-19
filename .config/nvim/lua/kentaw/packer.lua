@@ -53,6 +53,8 @@ require('packer').startup(function(use)
     use 'MunifTanjim/nui.nvim'
     use { 'nvim-neo-tree/neo-tree.nvim', branch = "v2.x" }
     use 'lewis6991/gitsigns.nvim'
+    use 'ThePrimeagen/vim-be-good'
+    use 'mbbill/undotree'
 
     if is_bootstrap then
         require('packer').sync()

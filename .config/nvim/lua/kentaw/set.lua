@@ -6,14 +6,23 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.breakindent = true
+vim.opt.smartindent = true
+
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.smartindent = true
+vim.opt.scrolloff = 8
+
+vim.opt.colorcolumn = "80"
 
 vim.opt.wrap = false
 
 vim.wo.signcolumn = 'yes'
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv('HOME') .. "/.vim/undodir"
+vim.opt.undofile = true
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
