@@ -6,7 +6,22 @@ require('mason.settings').set({
 
 local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
+-- lsp.preset('recommended')
+lsp.set_preferences({
+  suggest_lsp_servers = true,
+  setup_servers_on_start = true,
+  set_lsp_keymaps = true,
+  configure_diagnostics = true,
+  cmp_capabilities = true,
+  manage_nvim_cmp = true,
+  call_servers = 'local',
+  sign_icons = {
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = ''
+  }
+})
 
 lsp.ensure_installed({
   'tsserver',
@@ -59,14 +74,15 @@ local rust_lsp = lsp.build_options('rust_analyzer', {})
 
 lsp.setup()
 
-vim.opt.completeopt = {'menuone', 'noselect'}
+-- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.o.completeopt = 'menu,menuone,noselect,noinsert'
 
 local cmp = require('cmp')
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-e>'] = cmp.mapping.abort(),
-})
+local cmp_mappings = lsp.defaults.cmp_mappings()
 
-cmp_mappings['<CR>'] = nil
+cmp_mappings['<CR>'] = cmp.mapping(function(fallback)
+    fallback()
+end,{"i","c"})
 cmp_mappings['<Tab>'] = cmp.mapping.confirm({ select = true })
 cmp_mappings['<S-Tab>'] = nil
 
