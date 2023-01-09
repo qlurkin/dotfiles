@@ -1,6 +1,6 @@
 local tb = require('telescope.builtin')
 
-vim.keymap.set('n', "<leader>ff", tb.find_files, {desc = '[F]ind [F]iles'})
+vim.keymap.set('n', "<leader>ff", function() tb.find_files({no_ignore=true}) end, {desc = '[F]ind [F]iles'})
 vim.keymap.set('n', "<c-p>", tb.git_files, {desc = 'Find Git Files'})
 vim.keymap.set('n', "<leader>fg", tb.live_grep, {desc = '[F]ind by [G]rep'})
 vim.keymap.set('n', "<leader><space>", tb.buffers, {desc = '[ ] Find Buffers'})
