@@ -55,6 +55,8 @@ require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'ThePrimeagen/vim-be-good'
     use 'mbbill/undotree'
+    use 'Eandrju/cellular-automaton.nvim'
+    use 'Exafunction/codeium.vim'
 
     if is_bootstrap then
         require('packer').sync()

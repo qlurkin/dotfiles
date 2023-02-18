@@ -8,7 +8,7 @@ local lsp = require('lsp-zero')
 
 -- lsp.preset('recommended')
 lsp.set_preferences({
-  suggest_lsp_servers = true,
+  suggest_lsp_servers = false,
   setup_servers_on_start = true,
   set_lsp_keymaps = true,
   configure_diagnostics = true,
@@ -94,6 +94,12 @@ local cmp_config = lsp.defaults.cmp_config({
         ghost_text = true
     },
     mapping = cmp_mappings,
+    sources = cmp.config.sources({
+        { name = "path", keyword_length = 1 },
+        { name = "nvim_lsp", keyword_length = 1 },
+        { name = "luasnip", keyword_length = 1 },
+        { name = "buffer", keyword_length = 3 },
+    })
 })
 
 cmp.setup(cmp_config)
