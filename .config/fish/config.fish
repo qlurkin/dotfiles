@@ -35,3 +35,9 @@ set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
 # Setting PATH for Python 3.10
 # The original version is saved in /Users/lur/.config/fish/config.fish.pysave
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
+
+fish_ssh_agent
+
+# Setting PATH for Python 3.11
+# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
