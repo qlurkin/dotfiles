@@ -13,6 +13,7 @@ vim.keymap.set('n', "N", "Nzzzv")
 vim.keymap.set('n', "<leader>e", function () vim.cmd('Ex') end)
 vim.keymap.set('n', "<leader>i", "<cmd> vsplit<cr>")
 vim.keymap.set('n', "<leader>-", "<cmd> split<cr>")
+vim.keymap.set('n', "<leader>q", "<cmd> quitall<cr>")
 
 
 -- Remap for dealing with word wrap
