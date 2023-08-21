@@ -11,8 +11,8 @@ vim.keymap.set('n', "<C-u>", "<C-u>zz")
 vim.keymap.set('n', "n", "nzzzv")
 vim.keymap.set('n', "N", "Nzzzv")
 vim.keymap.set('n', "<leader>e", function () vim.cmd('Ex') end)
-vim.keymap.set('n', "<leader>i", "<cmd> vsplit<cr>")
-vim.keymap.set('n', "<leader>-", "<cmd> split<cr>")
+vim.keymap.set('n', "<leader>%", "<cmd> vsplit<cr>")
+vim.keymap.set('n', '<leader>"', "<cmd> split<cr>")
 vim.keymap.set('n', "<leader>q", "<cmd> quitall<cr>")
 
 
@@ -20,5 +20,9 @@ vim.keymap.set('n', "<leader>q", "<cmd> quitall<cr>")
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-
+-- Spell Check
+vim.keymap.set('n', '<leader>ss', "<cmd> setlocal spell! spelllang=fr<cr>")
+vim.keymap.set('n', '<leader>sn', "]s")
+vim.keymap.set('n', '<leader>sp', "[s")
+vim.keymap.set('n', '<leader>s=', "z=")
 
