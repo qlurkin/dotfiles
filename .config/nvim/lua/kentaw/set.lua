@@ -14,10 +14,13 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
 -- vim.opt.colorcolumn = "80"
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false
 
 vim.wo.signcolumn = 'yes'
+
+vim.opt.showmode = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
