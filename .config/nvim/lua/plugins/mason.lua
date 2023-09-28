@@ -4,9 +4,6 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
-      "emmet-language-server",
-      "rust-analyzer",
-      "pyright",
       -- "flake8",
     },
   },
