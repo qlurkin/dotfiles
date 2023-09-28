@@ -2,6 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- This file is automatically loaded by lazyvim.config.init
+local Util = require("lazyvim.util")
+
 vim.keymap.set("n", "éd", "[d", { desc = "Prev Diagnostic", remap = true })
 vim.keymap.set("n", "èd", "]d", { desc = "Next Diagnostic", remap = true })
 
@@ -22,3 +25,10 @@ vim.keymap.set("n", "èq", "]q", { desc = "Next Quickfix", remap = true })
 
 vim.keymap.set("n", "ét", "[t", { desc = "Prev Todo Comment", remap = true })
 vim.keymap.set("n", "èt", "]t", { desc = "Next Todo Comment", remap = true })
+
+-- floating terminal
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end
+vim.keymap.set("n", "<c-enter>", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("t", "<C-enter>", "<cmd>close<cr>", { desc = "Hide Terminal" })
