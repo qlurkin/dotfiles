@@ -32,3 +32,5 @@ local lazyterm = function()
 end
 vim.keymap.set("n", "<c-enter>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-enter>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
