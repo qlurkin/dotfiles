@@ -5,6 +5,12 @@
 -- This file is automatically loaded by lazyvim.config.init
 local Util = require("lazyvim.util")
 
+-- vim.keymap.del("n", "<C-h>")
+-- vim.keymap.del("n", "<C-j>")
+-- vim.keymap.del("n", "<C-k>")
+-- vim.keymap.del("n", "<C-l>")
+-- vim.keymap.del({ "n", "v" }, "<leader>cf")
+
 vim.keymap.set("n", "éd", "[d", { desc = "Prev Diagnostic", remap = true })
 vim.keymap.set("n", "èd", "]d", { desc = "Next Diagnostic", remap = true })
 
@@ -28,7 +34,7 @@ vim.keymap.set("n", "èt", "]t", { desc = "Next Todo Comment", remap = true })
 
 -- floating terminal
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.terminal(nil, { cwd = Util.root() })
 end
 vim.keymap.set("n", "<c-enter>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-enter>", "<cmd>close<cr>", { desc = "Hide Terminal" })

@@ -4,7 +4,9 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
-      -- "flake8",
+      "black",
+      "isort",
+      "prettier",
     },
   },
 }
