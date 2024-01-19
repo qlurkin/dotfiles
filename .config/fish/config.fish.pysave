@@ -17,8 +17,8 @@ alias please="sudo"
 alias plz="sudo"
 alias ls="exa --group-directories-first -l"
 alias cat="bat"
-alias python="python3"
-alias py="python3"
+alias python="python3.12"
+alias py="python3.12"
 alias nv="neovide --multigrid"
 alias vim="nvim"
 alias vi="nvim"
@@ -37,3 +37,7 @@ set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
 
 fish_ssh_agent
+
+# Setting PATH for Python 3.11
+# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"

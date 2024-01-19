@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      -- pyright = {},
+      wgsl_analyzer = {},
       emmet_language_server = {
         filetypes = {
           "css",

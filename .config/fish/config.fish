@@ -7,10 +7,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# Setting PATH for Python 3.9
-# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.9/bin" "$PATH"
-
 thefuck --alias | source
 zoxide init fish | source
 alias please="sudo"
@@ -28,16 +24,8 @@ fish_vi_key_bindings
 
 starship init fish | source
 
-# Setting PATH for Python 3.10
-# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
-
-# Setting PATH for Python 3.10
-# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
-
 fish_ssh_agent
 
-# Setting PATH for Python 3.11
+# Setting PATH for Python 3.12
 # The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.11/bin" "$PATH"
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"

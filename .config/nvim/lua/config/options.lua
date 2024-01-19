@@ -4,3 +4,9 @@
 
 vim.opt.conceallevel = 0
 vim.opt.spelllang = "fr"
+
+vim.filetype.add({
+  extension = {
+    wgsl = "wgsl",
+  },
+})
