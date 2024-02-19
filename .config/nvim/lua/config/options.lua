@@ -4,6 +4,7 @@
 
 vim.opt.conceallevel = 0
 vim.opt.spelllang = "fr"
+vim.opt.swapfile = false
 
 vim.filetype.add({
   extension = {

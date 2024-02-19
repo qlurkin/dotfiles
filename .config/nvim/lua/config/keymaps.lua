@@ -42,3 +42,6 @@ vim.keymap.set("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 vim.keymap.del("n", "<C-/>")
 vim.keymap.del("t", "<C-/>")
+
+-- cmd-S to save
+vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
