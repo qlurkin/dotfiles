@@ -32,12 +32,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -70,12 +70,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -108,12 +108,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -146,12 +146,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -185,12 +185,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -221,12 +221,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -259,12 +259,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -297,12 +297,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -335,12 +335,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -374,12 +374,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -413,12 +413,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -451,12 +451,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -493,12 +493,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -532,12 +532,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -570,12 +570,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -610,12 +610,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -648,12 +648,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -686,12 +686,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -724,12 +724,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -758,12 +758,12 @@
                     "type": "device_unless"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -787,7 +787,7 @@
             ]
           },
           {
-            "description": "Right-Option for special programmer keys",
+            "description": "Fn for special programmer keys",
             "manipulators": [
               {
                 "conditions": [
@@ -801,12 +801,12 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -840,12 +840,12 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -879,12 +879,12 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -918,12 +918,12 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
@@ -957,19 +957,19 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
                   "key_code": "period",
                   "modifiers": {
                     "mandatory": [
-                      "right_option"
+                      "fn"
                     ]
                   }
                 },
@@ -996,19 +996,19 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
                   "key_code": "l",
                   "modifiers": {
                     "mandatory": [
-                      "right_option"
+                      "fn"
                     ]
                   }
                 },
@@ -1035,19 +1035,19 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
                   "key_code": "n",
                   "modifiers": {
                     "mandatory": [
-                      "right_option"
+                      "fn"
                     ]
                   }
                 },
@@ -1076,19 +1076,19 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
                   "key_code": "open_bracket",
                   "modifiers": {
                     "mandatory": [
-                      "right_option"
+                      "fn"
                     ]
                   }
                 },
@@ -1115,19 +1115,19 @@
                     "type": "device_if"
                   },
                   {
+                    "type": "input_source_if",
                     "input_sources": [
                       {
                         "input_source_id": "com.apple.keylayout.Belgian"
                       }
-                    ],
-                    "type": "input_source_if"
+                    ]
                   }
                 ],
                 "from": {
                   "key_code": "backslash",
                   "modifiers": {
                     "mandatory": [
-                      "right_option"
+                      "fn"
                     ]
                   }
                 },
@@ -1166,18 +1166,7 @@
           "mouse_flip_y": false,
           "mouse_swap_wheels": false,
           "mouse_swap_xy": false,
-          "simple_modifications": [
-            {
-              "from": {
-                "key_code": "caps_lock"
-              },
-              "to": [
-                {
-                  "key_code": "escape"
-                }
-              ]
-            }
-          ],
+          "simple_modifications": [],
           "treat_as_built_in_keyboard": false
         },
         {
@@ -1352,7 +1341,18 @@
         "delay_milliseconds_before_open_device": 1000
       },
       "selected": true,
-      "simple_modifications": [],
+      "simple_modifications": [
+        {
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ],
       "virtual_hid_keyboard": {
         "country_code": 0,
         "indicate_sticky_modifier_keys_state": true,
