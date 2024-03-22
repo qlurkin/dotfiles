@@ -4,7 +4,7 @@ return {
     keys = function()
       return {
         {
-          "<S-tab>",
+          "<C-l>",
           function()
             return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next"
           end,
@@ -13,35 +13,19 @@ return {
           mode = "i",
         },
         {
-          "<S-tab>",
+          "<C-l>",
           function()
             require("luasnip").jump(1)
           end,
           mode = "s",
         },
-        -- {
-        --   "<C-\\>",
-        --   function()
-        --     return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next"
-        --   end,
-        --   expr = true,
-        --   silent = true,
-        --   mode = "i",
-        -- },
-        -- {
-        --   "<C-\\>",
-        --   function()
-        --     require("luasnip").jump(1)
-        --   end,
-        --   mode = "s",
-        -- },
-        -- {
-        --   "<C-]>",
-        --   function()
-        --     require("luasnip").jump(-1)
-        --   end,
-        --   mode = { "i", "s" },
-        -- },
+        {
+          "<C-h>",
+          function()
+            require("luasnip").jump(-1)
+          end,
+          mode = { "i", "s" },
+        },
       }
     end,
   },
@@ -51,11 +35,7 @@ return {
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<tab>"] = cmp.mapping.confirm({ select = true }),
-        -- ["<S-tab>"] = cmp.mapping.confirm({
-        --   behavior = cmp.ConfirmBehavior.Replace,
-        --   select = true,
-        -- }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         ["<CR>"] = function(fallback)
           cmp.abort()
           fallback()
