@@ -1,14 +1,7 @@
 return {
   "williamboman/mason.nvim",
-  opts = {
-    ensure_installed = {
-      "wgsl-analyzer",
-      "css-lsp",
-      "stylua",
-      "shfmt",
-      "black",
-      "isort",
-      "prettier",
-    },
-  },
+  opts = function(_, opts)
+    table.insert(opts.ensure_installed, "wgsl-analyzer")
+    table.insert(opts.ensure_installed, "css-lsp")
+  end,
 }
