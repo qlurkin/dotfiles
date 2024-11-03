@@ -25,3 +25,6 @@ fish_vi_key_bindings
 starship init fish | source
 
 fish_ssh_agent
+
+# Setting PATH for Python 3.13
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.13/bin" $PATH
