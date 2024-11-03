@@ -6,6 +6,7 @@ return {
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<CR>"] = function(fallback)
           cmp.abort()
           fallback()
@@ -19,9 +20,7 @@ return {
     keys = {
       {
         "<Tab>",
-        function()
-          return "<Tab>"
-        end,
+        false,
         expr = true,
         silent = true,
         mode = { "i", "s" },

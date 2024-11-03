@@ -25,7 +25,3 @@ fish_vi_key_bindings
 starship init fish | source
 
 fish_ssh_agent
-
-# Setting PATH for Python 3.12
-# The original version is saved in /Users/lur/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
