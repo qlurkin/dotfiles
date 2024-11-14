@@ -1,0 +1,56 @@
+(defcfg
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
+  fallthrough true
+  allow-cmd false
+  implicit-around around
+)
+
+(defsrc
+  102d  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  fn   lctl lalt lmet         spc         rmet ralt      lft  down rght
+)
+
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @act @sal @dmt @fsh @gac @hac @jsh @kmt @lal @;ct '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  fn   lctl lalt lmet         @spa        rmet ralt      lft  down rght
+)
+
+(deflayer accent
+  _    _    _    _    _    _    @cir _    _    _    _    _    _    _
+  _    _    _    @egv _    _    _    @ugv _    _    _    _    _    _
+  _    @agv _    @eag _    _    _    _    _    _    @trm @trm _
+  _    _    _    @ccd _    _    _    _    _    _    _    _    _
+  _    _    _    _            _           _    _         _    _    _
+)
+
+(defalias
+  egv  (tap-macro A-grv e)
+  eag  (tap-macro A-e e)
+  agv  (tap-macro A-grv a)
+  ugv  (tap-macro A-grv u)
+  ccd  A-c
+  cir  A-i
+  trm  A-u
+  gac  (tap-hold 200  g   (layer-toggle accent))
+  hac  (tap-hold 200  h   (layer-toggle accent))
+  spa  (tap-hold 200  spc (layer-toggle accent))
+  acc  (layer-toggle  accent)
+  fsh  (tap-hold 200  f  lsft)
+  jsh  (tap-hold 200  j  rsft)
+  dmt  (tap-hold 200  d  lmet)
+  kmt  (tap-hold 200  k  rmet)
+  sal  (tap-hold 200  s  lalt)
+  lal  (tap-hold 200  l  ralt)
+  act  (tap-hold 200  a  lctl)
+  ;ct  (tap-hold 200  ;  rctl)
+)
+
+
+
