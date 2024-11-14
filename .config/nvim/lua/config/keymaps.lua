@@ -32,16 +32,5 @@ vim.keymap.set("n", "èq", "]q", { desc = "Next Quickfix", remap = true })
 vim.keymap.set("n", "ét", "[t", { desc = "Prev Todo Comment", remap = true })
 vim.keymap.set("n", "èt", "]t", { desc = "Next Todo Comment", remap = true })
 
--- floating terminal
-local lazyterm = function()
-  Util.terminal(nil, { cwd = Util.root() })
-end
-vim.keymap.set("n", "<c-enter>", lazyterm, { desc = "Terminal (root dir)" })
-vim.keymap.set("t", "<C-enter>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-vim.keymap.set("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
-vim.keymap.set("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-vim.keymap.del("n", "<C-/>")
-vim.keymap.del("t", "<C-/>")
-
 -- cmd-S to save
 vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
