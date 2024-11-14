@@ -20,6 +20,7 @@ alias nv="neovide --multigrid"
 alias vim="nvim"
 alias vi="nvim"
 alias matrix="r-matrix -r"
+alias km="kmonad ~/.config/kmonad/config.kbd"
 
 fish_vi_key_bindings
 
