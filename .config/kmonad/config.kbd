@@ -19,7 +19,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @act @sal @dmt @fsh @gac @hac @jsh @kmt @lal @;ct '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft up
-  fn   lctl lalt lmet         @spa        rmet ralt      lft  down rght
+  a    lctl lalt lmet         @spa        rmet ralt      lft  down rght
 )
 
 (deflayer accent
@@ -31,13 +31,13 @@
 )
 
 (defalias
-  egv  (tap-macro A-grv e)
-  eag  (tap-macro A-e e)
-  agv  (tap-macro A-grv a)
-  ugv  (tap-macro A-grv u)
-  ccd  A-c
-  cir  A-i
-  trm  A-u
+  egv  (tap-macro RA-grv e)
+  eag  (tap-macro RA-e e)
+  agv  (tap-macro RA-grv a)
+  ugv  (tap-macro RA-grv u)
+  ccd  RA-c
+  cir  RA-i
+  trm  RA-u
   gac  (tap-hold 200  g   (layer-toggle accent))
   hac  (tap-hold 200  h   (layer-toggle accent))
   spa  (tap-hold 200  spc (layer-toggle accent))
@@ -50,7 +50,6 @@
   lal  (tap-hold 200  l  ralt)
   act  (tap-hold 200  a  lctl)
   ;ct  (tap-hold 200  ;  rctl)
+  kmd  (tap-macro k m o n a d)
 )
-
-
 
