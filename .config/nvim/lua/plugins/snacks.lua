@@ -1,7 +1,9 @@
 return {
-  "nvimdev/dashboard-nvim",
-  opts = function(_, opts)
-    local logo = [[
+  "folke/snacks.nvim",
+  opts = {
+    dashboard = {
+      preset = {
+        header = [[
 ██╗     ██╗   ██╗██████╗ ██╗   ██╗██╗███╗   ███╗
 ██║     ██║   ██║██╔══██╗██║   ██║██║████╗ ████║
 ██║     ██║   ██║██████╔╝██║   ██║██║██╔████╔██║
@@ -9,10 +11,10 @@ return {
 ███████╗╚██████╔╝██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚══════╝ ╚═════╝ ╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 [Powered by LazyVim]
-    ]]
-
-    logo = string.rep("\n", 5) .. logo .. "\n\n"
-
-    opts.config.header = vim.split(logo, "\n")
-  end,
+ ]],
+        -- stylua: ignore
+        ---@type snacks.dashboard.Item[]
+      },
+    },
+  },
 }

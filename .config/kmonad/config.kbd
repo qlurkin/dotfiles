@@ -7,7 +7,8 @@
 )
 
 (defsrc
-  102d  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  nubs 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft up
@@ -15,19 +16,21 @@
 )
 
 (deflayer qwerty
+  esc  brdn brup mctl spot dict _    prev pp   next mute vold volu
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @act @sal @dmt @fsh @gac @hac @jsh @kmt @lal @;ct '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft up
-  a    lctl lalt lmet         @spa        rmet ralt      lft  down rght
+  fn   lctl lalt lmet         @spa        rmet ralt      lft  down rght
 )
 
 (deflayer accent
-  _    _    _    _    _    _    @cir _    _    _    _    _    _    _
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  _    _    _    _    _    _    @cir _    _    _    _    _    _    del
   _    _    _    @egv _    _    _    @ugv _    _    _    _    _    _
   _    @agv _    @eag _    _    _    _    _    _    @trm @trm _
-  _    _    _    @ccd _    _    _    _    _    _    _    _    _
-  _    _    _    _            _           _    _         _    _    _
+  _    _    _    @ccd _    _    _    _    _    _    _    _    pgup
+  _    _    _    _            _           _    _         home pgdn end
 )
 
 (defalias
