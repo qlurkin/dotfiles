@@ -10,7 +10,8 @@ local id = math.random(#files)
 
 local config = {}
 
-config.color_scheme = "Dracula"
+-- config.color_scheme = "Dracula"
+config.color_scheme = "Tokyo Night Moon"
 
 config.font = wezterm.font("FiraCode Nerd Font")
 config.enable_kitty_keyboard = true
@@ -19,23 +20,23 @@ config.native_macos_fullscreen_mode = true
 config.integrated_title_button_style = "MacOsNative"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
-config.background = {
-	{
-		source = {
-			File = files[id],
-		},
-		vertical_align = "Middle",
-		horizontal_align = "Center",
-	},
-	{
-		source = {
-			Color = "rgb(30,31,41)",
-		},
-		opacity = 0.9,
-		width = "100%",
-		height = "100%",
-	},
-}
+-- config.background = {
+-- 	{
+-- 		source = {
+-- 			File = files[id],
+-- 		},
+-- 		vertical_align = "Middle",
+-- 		horizontal_align = "Center",
+-- 	},
+-- 	{
+-- 		source = {
+-- 			Color = "rgb(30,31,41)",
+-- 		},
+-- 		opacity = 0.9,
+-- 		width = "100%",
+-- 		height = "100%",
+-- 	},
+-- }
 
 config.keys = {
 	{
