@@ -15,10 +15,15 @@ config.color_scheme = "Tokyo Night Moon"
 
 config.font = wezterm.font("FiraCode Nerd Font")
 config.enable_kitty_keyboard = true
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 config.native_macos_fullscreen_mode = true
 config.integrated_title_button_style = "MacOsNative"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.inactive_pane_hsb = {
+	saturation = 0.5,
+	brightness = 0.5,
+}
 
 -- config.background = {
 -- 	{
