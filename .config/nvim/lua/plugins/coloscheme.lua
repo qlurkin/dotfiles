@@ -43,27 +43,27 @@ return {
   --     -- end,
   --   },
   -- },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      style = "moon",
-      -- transparent = true,
-    },
-  },
-
-  {
-    "catppuccin",
-    opts = {
-      -- transparent_background = true,
-    },
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   opts = {
+  --     style = "moon",
+  --     -- transparent = true,
+  --   },
+  -- },
+  --
+  -- {
+  --   "catppuccin",
+  --   opts = {
+  --     -- transparent_background = true,
+  --   },
+  -- },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "catppuccin",
+      colorscheme = "catppuccin-mocha",
       -- colorscheme = "dracula",
-      colorscheme = "tokyonight",
+      -- colorscheme = "tokyonight",
     },
   },
 

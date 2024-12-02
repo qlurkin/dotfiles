@@ -11,7 +11,7 @@ local id = math.random(#files)
 local config = {}
 
 -- config.color_scheme = "Dracula"
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font("FiraCode Nerd Font")
 config.enable_kitty_keyboard = true
