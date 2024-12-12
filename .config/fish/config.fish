@@ -21,6 +21,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias matrix="r-matrix -r"
 alias km="sudo kmonad ~/.config/kmonad/config.kbd"
+# alias love="/Applications/love.app/Contents/MacOS/love"
 
 fish_vi_key_bindings
 
