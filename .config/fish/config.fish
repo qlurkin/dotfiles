@@ -1,9 +1,8 @@
 eval (/opt/homebrew/bin/brew shellenv)
 set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/bin" $PATH
-set -x PATH "$HOME/opt/flutter/bin" $PATH
-set -x PATH "$HOME/opt/nvim-macos/bin" $PATH
 set -x PATH "$HOME/.local/bin" $PATH
+set -x PATH "$HOME/opt/zig" $PATH
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -12,7 +11,7 @@ thefuck --alias | source
 zoxide init fish | source
 alias please="sudo"
 alias plz="sudo"
-alias ls="exa --group-directories-first -l"
+alias ls="eza --group-directories-first -l"
 alias cat="bat"
 alias python="python3"
 alias py="python3"

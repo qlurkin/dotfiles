@@ -1,0 +1,5 @@
+theme = Dracula
+font-size = 16
+macos-option-as-alt = left
+window-padding-balance = true
+quit-after-last-window-closed = true
