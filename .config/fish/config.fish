@@ -2,7 +2,8 @@ eval (/opt/homebrew/bin/brew shellenv)
 set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/bin" $PATH
 set -x PATH "$HOME/.local/bin" $PATH
-set -x PATH "$HOME/opt/zig" $PATH
+set -x PATH "$HOME/opt/slang/bin" $PATH
+# set -x PATH "$HOME/opt/zig" $PATH
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -20,6 +21,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias matrix="r-matrix -r"
 alias km="sudo kmonad ~/.config/kmonad/config.kbd"
+alias zig14="~/opt/zig-macos-aarch64-0.14.0-dev.2628+5b5c60f43/zig"
+alias dbget="python3 ~/Program/spriteget/spriteget.py"
 # alias love="/Applications/love.app/Contents/MacOS/love"
 
 fish_vi_key_bindings
