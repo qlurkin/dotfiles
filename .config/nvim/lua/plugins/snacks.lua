@@ -1,3 +1,11 @@
+-- local handle = io.popen("echo yop")
+-- local result = ""
+-- if handle ~= nil then
+--   result = handle:read("*a")
+--   handle:close()
+-- end
+-- local output = vim.fn.system({ "python3", "/Users/lur/Program/spriteget/spriteget.py" })
+--print(result)
 return {
   "folke/snacks.nvim",
   opts = {
@@ -14,9 +22,12 @@ return {
   ]],
       },
       sections = {
+        -- {
+        --   text = "\27[2J[HYop",
+        -- },
         {
           section = "terminal",
-          cmd = "dbget -w 50 --height 30 --author; sleep .1",
+          cmd = "dbget -w 50 --height 30 --author",
           random = 10,
           ttl = 60,
           indent = 0,

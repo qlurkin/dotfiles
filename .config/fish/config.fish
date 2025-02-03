@@ -23,6 +23,7 @@ alias matrix="r-matrix -r"
 alias km="sudo kmonad ~/.config/kmonad/config.kbd"
 alias zig14="~/opt/zig-macos-aarch64-0.14.0-dev.2628+5b5c60f43/zig"
 alias dbget="python3 ~/Program/spriteget/spriteget.py"
+alias deepseek="ollama run deepseek-r1:1.5b"
 # alias love="/Applications/love.app/Contents/MacOS/love"
 
 fish_vi_key_bindings

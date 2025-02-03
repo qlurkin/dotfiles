@@ -3,6 +3,7 @@
 -- Add any additional options here
 
 vim.opt.conceallevel = 0
+-- vim.g.spellfile_URL = "https://ftp.nluug.nl/vim/runtime/spell/"
 vim.opt.spelllang = "fr"
 vim.opt.swapfile = false
 
