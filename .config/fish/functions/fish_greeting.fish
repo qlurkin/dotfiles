@@ -1,3 +1,4 @@
 function fish_greeting
-  figlet -f "$HOME/.config/fish/Slant Relief.flf" LUR | lolcat
+    # figlet -f "$HOME/.config/fish/Slant Relief.flf" LUR | lolcat
+    dbget
 end
