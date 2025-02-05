@@ -2,66 +2,74 @@
     "profiles": [
         {
             "complex_modifications": {
+                "parameters": {
+                    "basic.to_delayed_action_delay_milliseconds": 150,
+                    "basic.to_if_held_down_threshold_milliseconds": 150
+                },
                 "rules": [
                     {
-                        "description": "rctrl + l => right arrow",
+                        "description": "accent layer + l => right arrow",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "l" },
                                 "to": [{ "key_code": "right_arrow" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "rctrl + k => up arrow",
+                        "description": "accent layer + k => up arrow",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "k" },
                                 "to": [{ "key_code": "up_arrow" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "rctrl + j => down arrow",
+                        "description": "accent layer + j => down arrow",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "j" },
                                 "to": [{ "key_code": "down_arrow" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "rctrl + h => left arrow",
+                        "description": "accent layer + h => left arrow",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "h" },
                                 "to": [{ "key_code": "left_arrow" }],
                                 "type": "basic"
                             }
@@ -71,13 +79,16 @@
                         "description": "; to right control",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
                                 },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "semicolon" }] },
                                 "to_if_alone": [
@@ -99,10 +110,6 @@
                                     "key_code": "l",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "l" }] },
                                 "to_if_alone": [
                                     {
@@ -122,10 +129,6 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
                                 },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "k" }] },
                                 "to_if_alone": [
@@ -147,10 +150,6 @@
                                     "key_code": "j",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "j" }] },
                                 "to_if_alone": [
                                     {
@@ -167,13 +166,16 @@
                         "description": "a to left control",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "a",
                                     "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
                                 },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "a" }] },
                                 "to_if_alone": [
@@ -195,10 +197,6 @@
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "s" }] },
                                 "to_if_alone": [
                                     {
@@ -215,13 +213,16 @@
                         "description": "d to left command",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
                                 },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "d" }] },
                                 "to_if_alone": [
@@ -243,10 +244,6 @@
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
                                 "to_delayed_action": { "to_if_canceled": [{ "key_code": "f" }] },
                                 "to_if_alone": [
                                     {
@@ -260,16 +257,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + ' => dead(¨)",
+                        "description": "accent layer + ' => dead(¨)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "quote" },
                                 "to": [
                                     {
                                         "key_code": "u",
@@ -281,16 +279,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + ; => dead(¨)",
+                        "description": "accent layer + ; => dead(¨)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "semicolon" },
                                 "to": [
                                     {
                                         "key_code": "u",
@@ -302,16 +301,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + 6 => dead(^)",
+                        "description": "accent layer + 6 => dead(^)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "6",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "6" },
                                 "to": [
                                     {
                                         "key_code": "i",
@@ -323,16 +323,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + c => ç",
+                        "description": "accent layer + c => ç",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "c" },
                                 "to": [
                                     {
                                         "key_code": "c",
@@ -344,16 +345,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + u => ù",
+                        "description": "accent layer + u => ù",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "u",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "u" },
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde",
@@ -366,16 +368,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + a => à",
+                        "description": "accent layer + a => à",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "a" },
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde",
@@ -388,16 +391,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + d => è",
+                        "description": "accent layer + d => è",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "d" },
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde",
@@ -410,16 +414,17 @@
                         ]
                     },
                     {
-                        "description": "rctrl + e => é",
+                        "description": "accent layer + e => é",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": ["right_control"],
-                                        "optional": ["any"]
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": true
                                     }
-                                },
+                                ],
+                                "from": { "key_code": "e" },
                                 "to": [
                                     {
                                         "key_code": "e",
@@ -432,15 +437,29 @@
                         ]
                     },
                     {
-                        "description": "space to right control",
+                        "description": "hold space to accent layer",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "spacebar",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "right_control" }],
-                                "to_if_alone": [{ "key_code": "spacebar" }],
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "spacebar" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "set_variable": {
+                                            "key_up_value": false,
+                                            "name": "accent_layer",
+                                            "value": true
+                                        }
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
