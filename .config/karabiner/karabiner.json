@@ -106,6 +106,13 @@
                         "description": "l to right option",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": { "optional": ["any"] }
@@ -126,6 +133,13 @@
                         "description": "k to right command",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": { "optional": ["any"] }
@@ -146,6 +160,13 @@
                         "description": "j to right shift",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": { "optional": ["any"] }
@@ -193,6 +214,13 @@
                         "description": "s to left option",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
@@ -240,6 +268,13 @@
                         "description": "f to left shift",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "name": "accent_layer",
+                                        "type": "variable_if",
+                                        "value": false
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
