@@ -3,8 +3,8 @@
         {
             "complex_modifications": {
                 "parameters": {
-                    "basic.to_delayed_action_delay_milliseconds": 150,
-                    "basic.to_if_held_down_threshold_milliseconds": 150
+                    "basic.to_delayed_action_delay_milliseconds": 100,
+                    "basic.to_if_held_down_threshold_milliseconds": 100
                 },
                 "rules": [
                     {
@@ -77,6 +77,7 @@
                     },
                     {
                         "description": "; to right control",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -104,6 +105,7 @@
                     },
                     {
                         "description": "l to right option",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -131,6 +133,7 @@
                     },
                     {
                         "description": "k to right command",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -158,6 +161,7 @@
                     },
                     {
                         "description": "j to right shift",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -185,6 +189,7 @@
                     },
                     {
                         "description": "a to left control",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -212,6 +217,7 @@
                     },
                     {
                         "description": "s to left option",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -239,6 +245,7 @@
                     },
                     {
                         "description": "d to left command",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -266,6 +273,7 @@
                     },
                     {
                         "description": "f to left shift",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -475,6 +483,17 @@
                         "description": "hold space to accent layer",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "description": "Apple",
+                                                "vendor_id": 1452
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "spacebar",
                                     "modifiers": { "optional": ["any"] }
@@ -1361,6 +1380,16 @@
             ],
             "name": "Default profile",
             "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "non_us_backslash" },
+                    "to": [{ "key_code": "grave_accent_and_tilde" }]
+                },
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "escape" }]
+                }
+            ],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
