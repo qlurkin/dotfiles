@@ -1,4 +1,7 @@
-eval (/opt/homebrew/bin/brew shellenv)
+set -l os (uname)
+if test "$os" = Darwin
+    eval (/opt/homebrew/bin/brew shellenv)
+end
 set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/bin" $PATH
 set -x PATH "$HOME/.local/bin" $PATH
@@ -8,7 +11,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-thefuck --alias | source
 zoxide init fish | source
 alias please="sudo"
 alias plz="sudo"
