@@ -8,7 +8,39 @@
                 },
                 "rules": [
                     {
+                        "description": "hold space to Right Alt",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "description": "Apple",
+                                                "vendor_id": 1452
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "spacebar" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "accent layer + l => right arrow",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -26,6 +58,7 @@
                     },
                     {
                         "description": "accent layer + k => up arrow",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -43,6 +76,7 @@
                     },
                     {
                         "description": "accent layer + j => down arrow",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -60,6 +94,7 @@
                     },
                     {
                         "description": "accent layer + h => left arrow",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -301,6 +336,7 @@
                     },
                     {
                         "description": "accent layer + ' => dead(¨)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -323,6 +359,7 @@
                     },
                     {
                         "description": "accent layer + ; => dead(¨)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -345,6 +382,7 @@
                     },
                     {
                         "description": "accent layer + 6 => dead(^)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -367,6 +405,7 @@
                     },
                     {
                         "description": "accent layer + c => ç",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -389,6 +428,7 @@
                     },
                     {
                         "description": "accent layer + u => ù",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -412,6 +452,7 @@
                     },
                     {
                         "description": "accent layer + a => à",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -435,6 +476,7 @@
                     },
                     {
                         "description": "accent layer + d => è",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -458,6 +500,7 @@
                     },
                     {
                         "description": "accent layer + e => é",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -481,6 +524,7 @@
                     },
                     {
                         "description": "hold space to accent layer",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1382,12 +1426,12 @@
             "selected": true,
             "simple_modifications": [
                 {
-                    "from": { "key_code": "non_us_backslash" },
-                    "to": [{ "key_code": "grave_accent_and_tilde" }]
-                },
-                {
                     "from": { "key_code": "caps_lock" },
                     "to": [{ "key_code": "escape" }]
+                },
+                {
+                    "from": { "key_code": "non_us_backslash" },
+                    "to": [{ "key_code": "grave_accent_and_tilde" }]
                 }
             ],
             "virtual_hid_keyboard": {
