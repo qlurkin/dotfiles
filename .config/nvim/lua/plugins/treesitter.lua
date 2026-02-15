@@ -1,6 +1,7 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    opts.ensure_installed = "all"
-  end,
-}
+-- return {
+--   "nvim-treesitter/nvim-treesitter",
+--   opts = function(_, opts)
+--     opts.ensure_installed = "all"
+--   end,
+-- }
+return {}

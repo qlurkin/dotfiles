@@ -3,9 +3,12 @@ return {
   lazy = false,
   opts = {
     delete_to_trash = true,
-    keymaps = {},
+    keymaps = {
+      ["<esc>"] = { "actions.close", mode = "n" },
+    },
     float = {
       border = "rounded",
+      preview_split = "right"
     },
   },
   keys = {
