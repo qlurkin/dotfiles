@@ -1,11 +1,11 @@
 -- Basic autocommands
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
--- Highlight yanked text
+-- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup,
   callback = function()
-    vim.highlight.on_yank()
+    (vim.hl or vim.highlight).on_yank()
   end,
 })
 
