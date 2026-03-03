@@ -1,3 +1,4 @@
 function dbfetch
-    fastfetch --logo (dbget | psub) --logo-padding-top 2
+    # dbget | fastfetch --logo-padding-top 2 --file-raw -
+    spriteget --fetch
 end

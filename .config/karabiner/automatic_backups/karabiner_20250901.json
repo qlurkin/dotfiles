@@ -9,7 +9,6 @@
                 "rules": [
                     {
                         "description": "hold space to Right Alt",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1428,7 +1427,7 @@
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "right_option" }]
+                    "to": [{ "key_code": "escape" }]
                 },
                 {
                     "from": { "key_code": "non_us_backslash" },
