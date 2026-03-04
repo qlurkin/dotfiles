@@ -68,7 +68,9 @@ local theme = wezterm.color.get_builtin_schemes()[config.color_scheme]
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local edge_background = theme.tab_bar.background
-	local background = theme.selection_bg
+
+	-- inactive tabs
+	local background = wezterm.color.parse(edge_background):lighten(0.15)
 	local foreground = theme.tab_bar.inactive_tab.fg_color
 	local index_bg = theme.tab_bar.inactive_tab_hover.bg_color
 	local index_fg = theme.tab_bar.inactive_tab_hover.fg_color
