@@ -1,12 +1,18 @@
 set -l os (uname)
-if test "$os" = Darwin
-    eval (/opt/homebrew/bin/brew shellenv)
-end
-set -x PATH "$HOME/.cargo/bin" $PATH
-set -x PATH "$HOME/bin" $PATH
-set -x PATH "$HOME/.local/bin" $PATH
-set -x PATH "$HOME/opt/slang/bin" $PATH
+# if test "$os" = Darwin
+#     eval (/opt/homebrew/bin/brew shellenv)
+# end
+# set -x PATH "$HOME/.cargo/bin" $PATH
+fish_add_path "$HOME/.cargo/bin"
+# set -x PATH "$HOME/bin" $PATH
+fish_add_path PATH "$HOME/bin" $PATH
+# set -x PATH "$HOME/.local/bin" $PATH
+fish_add_path "$HOME/.local/bin"
+# set -x PATH "$HOME/opt/slang/bin" $PATH
+fish_add_path "$HOME/opt/slang/bin"
 # set -x PATH "$HOME/opt/zig" $PATH
+fish_add_path /Applications/Obsidian.app/Contents/MacOS
+# fish_add_path "$HOME/opt/odin"
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -31,4 +37,16 @@ alias deepseek="ollama run deepseek-r1:1.5b"
 fish_vi_key_bindings
 
 starship init fish | source
-mise activate fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+fish_add_path $BUN_INSTALL/bin
+
+# Mise en place
+~/.local/bin/mise activate fish | source
+
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv fish)"
+
+# clang linker
+set -x LIBRARY_PATH /opt/homebrew/opt/lua@5.4/lib
